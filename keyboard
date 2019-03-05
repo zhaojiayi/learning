@@ -1,0 +1,53 @@
+pwd显示当前目录
+touch 建立空的文本文件
+cat -n filename 显示行号
+mkdir创建目录 rmdir删除目录（目录为空才行）
+touch filename 创建文件
+ls -a查看包含隐藏文件 -l查看日期
+grep kwd filename 在文本里查找kwd所在的一行，有空格加‘’
+ls /dev/ | grep kwd组合☆
+find需要目录，locate不需要
+find -name -type(f文件,d目录) -atime使用 -mtime修改 -print +之前 -最近
+rm 删除 要-i -r删除目录下所有并删除目录
+mv移动，默认覆盖 需要-i 可以用来重命名
+目录和文件不能重名！！！！！
+cp -a 权限一致  结尾有/与无/有重要区别？？？ -r源文件为目录时使用 -i提示，默认不提示
+cp -r dir1 dir2     (recursive copy) 复制整个目录.若目录 dir2 不存在，则将目录dir1，及其所有文档和子目录，复制到目录 dir2 下，新目录名称为dir1.若目录dir2不存在，则将dir1，及其所有文档和子目录，复制为目录 dir2)
+>重定向 >>追加
+.deb文件用dpkg管理 -i=-install
+.rpm文件用rpm管理
+下载tar.gz。解压后 ./configure --prefix=/地址。之后编译 make。之后安装sudo make install需要root。
+df 查看磁盘情况
+zip [参数] [打包后的文件名] [打包的目录路径]
+一般 zip -r .....
+gunzip等于gzip -d
+gzip -tv filename 显示压缩文件是否完好
+tar -czvf filename.tar.gz objectfilename c指导创建归档文件 v用于显示命令执行过程 f用于制定归档文件的文件名 z调用gzip程序
+tar -xzvf filename.tar.gz 解压
+vim filename初始化。I插入模式。O在下方插入一行。w filename保存。q退出。:wq保存文件并退出。:q!放弃保存并退出
+:向前查找 ？向后查找
+/搜索
+sudo nautilus  root打开文件夹
+git log --oneline
+git mv 文件1 目标文件(名字可不同)
+git diff --stage -M 检测移动
+git commit -am"str"  提交修改文件并在shell直接输入消息（不用add和vim）
+echo "str" >> .gitignore
+conda list --export conda_list.txt 可以导出所有你已经安装好的包，包括版本和编译字符。你可以把这些保存在文件里。
+同时使用 conda install --file conda_list.txt 或者 conda create --file 来安装同样的包。
+pip freeze > requirements.txt将包依赖信息保存在requirements.txt文件中。
+pip install -r requirements.txt安装
+apt-cache search 关键字搜索
+baobab
+ls -Slh 文件夹默认为4KB
+du -sh * | sort -rn
+nc -zv localhost 80 检查端口是否被占用
+ls -lt  时间由新到旧
+ls -ltr 时间由旧到新
+权限chmod 764 666.txt
+chmod -R 764 directory 递归的，子目录也改变
+$echo 16384 | sudo tee -a /proc/sys/fs/inotify/max_user_watches     inode节点已满的问题(重启重置已解决)
+lsmod
+modinfo rtl8723be
+sudo modprobe -r rtl8723be
+sudo modprobe rtl8723be

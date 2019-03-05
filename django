@@ -1,0 +1,16 @@
+Blog.objects.create()是自动保存的
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "../settings")是错误的，不支持../ 需要导入sys
+HttpRequest.GET和HttpRequest.POST都是dictionary-like objects 保证大写
+当请求一个页面时，Django创建一个包含关于请求的元数据的HttpRequest对象。然后Django加载适当的视图
+Django将HttpRequest作为第一个参数传递给视图函数。每个视图负责返回一个HttpResponse对象 括号里第一个参数都是request ！！
+HttpRequest.GET和HttpRequest.POST返回的都是QueryDict，是dict的子类，享有一切
+Database.objects.values() 是QuerySet(ValuesQuerySet)，返回的是字典列表，如果多个，是字典的列表！！而不是普通的模型对象
+Database.objects.values()对于外键属性，返回的是id 例如name_id。 values('name')和values('name_id')返回的是一样的
+values_list(*fields, flat=False) 类似于values()，但是返回的是元组列表而不是字典列表（没有属性，只有value
+运行django项目中的单个py，用python manage.py shell 在shell里面用%run path
+Queryset中，属性pk和id作用一致，只是pk为primaryKey，(pk=1)(id=1)一致
+{{ request.path }}?{{ request.GET.urlencode }} 完整的url 理解！！！！！
+
+Applications include some combination of models, views, templates, template tags, static files, URLs, middleware, etc. They’re generally wired into projects with the INSTALLED_APPS setting and optionally with other mechanisms such as URLconfs, the MIDDLEWARE_CLASSES setting, or template inheritance.
+应用程序包括模型，视图，模板，模板标记，静态文件，URL，中间件等的一些组合。它们通常通过INSTALLED_APPS设置连接到项目中，并且可以与其他机制（如URLconf，MIDDLEWARE_CLASSES设置或模板继承。
+dumpdata和loaddata。loaddata会覆盖原有的id对应项（以loaddata为准）。

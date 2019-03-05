@@ -1,0 +1,64 @@
+strlen(不包括结束符);sizeof();a.size(不包括结束符)
+数组的话length=sizeof(a)/sizeof(int)
+string使用内置的new和delete
+new初始化数组为0，char初始化为ascii的0，*next的next也是0；而初始化数组和字符串都是随机的（有[]的那种）
+char[20]是自动存储，随着函数。new和delete是堆，与自动存储变量和静态变量是分开的，可以不随函数（在一个函数用new，在另一个函数delete他。）
+类中this是指针，×this是值
+函数参数是const，不会调用复制构造函数。
+字符串数组不能值相等，char*，理解。string可以。
+char* a = "sdsdfs"可以，数组不行。
+char* a = "ab"; char* b = "ab";则a==b，如果是a[]b[]则不相等。
+cout<<(x=10)
+cout.setf(ios_base::boolalpha)//cout变为true或false不再是1或0
+++i前缀效率高
+对于数组a[20]，*(a+i)或者int *t = a,*(t++)。不能够a++。int *a = new int [5]，a应该可以++。
+++的优先级高于* *a++是*(a++)
+char s = 'a';s++;
+#define TYPE char*;typedef char* TYPE;一系列定义不适用。
+cin将忽略空格和换行符和tab，又保留换行符下一次。用cin.get(char)补救（可以读取空格）
+cin.get(char)可重复使用char。
+cin.get(ch);→while(cin.fail()==false);while(cin.get(ch));while(cin);while(ch!=EOF);while((ch=cin.get())!=EOF);while(cin>>ch);
+cin.get(ch)与ch=cin.get()有区别，159页。cin.get(ch)返回cin。
+while(!(cin>>golf[i]))遇到非法输入，不会赋值，但输入存在。
+cin.clear()重置输入，使得遇到非法输入后能够再次输入，但非法输入还存在。再用while(cin.get()!='\n') continue;删除错误输入。
+cin.get(char);while(char!='\n')cin.get(char);//cin.get()保留换行符！！
+二维数组 char *a[5]是5×n。char a[5][n]是5×n。注意。
+文件输入中，inFile.eof()只能检测eof，inFile.fail()检测eof和类型不匹配。
+int value;inFIle>>value;while(inFile.good()){...;inFile>>value;}固定格式。while(inFile>>value)也行
+int sum(int a[],int n);调用可以sum(a+3,3)。牛逼儿
+const int *a = &s不能通过*a修改值，可以修改指向。int* const a = &s不能修改指向，可以通过*a修改值。
+函数参数不能是数组。
+int (*a)[4]是一个指针，可以用于函数参数，也可以是int a[][4]。int *a[4]是4个指针，不能用于函数参数传递。规定了列大小，行没限制。
+arr[b][c] == *(*(arr+b)+c)
+int *pf(int)和int (*pf)(int)不一样
+括号优先级比*高。
+fc(int,double*)或fc(int,double[])作为原型都OK,等价。
+int * (*p1)(double *,int)=f1;(*p1)(av,3)是返回的int的地址。*(*p1)(av,3)返回的才是int的值。
+double×* (*pa[3])(double*,int) = {f1,f2,f3}牛逼儿
+函数指针的应用：void(double (*func)(int),int s){...(*func)(s)...} func(s)也ok
+delete a;a = NULL注意顺序
+bool类型 return fun1()||func1()||func1();这样都OK，而且很重要
+树的递归，if(NODE!=NULL){...}很重要，隐藏出口。
+判断奇偶 num&0x1
+结构体构造！Point(double _x,double _y):x(_x),y(_y) {}没有分号。
+空的vector，begin()==end()！！！
+*it.sum错误，应该(*it).sum。结构体访问运算符优先级问题
+for循环外部限制越界条件，里面再有i++时也要注意越界，要在内部if中限定！！
+vector.size()是无符号数，判定时一定要转化成int！！！
+ififelse,加括号保险
+stringstream io;io<<setw(4)<<setfill('0')<<original;task=io.str();真的牛逼！！格式转化！！！
+io.str("")清空io。io.clear()不行，如果io里面的东西没有及时>>出来。
+C++可以让函数名相同，但参数必须不同。不同的返回值，参数和函数名相同，不被允许。是以下几点的基础！！！！
+如果有多个原型，编译器在选择原型时，非模板优先于显示具体化和普通模板，显式具体化优先于普通模板！！！承接上一条。
+template <> void Swap<Node>(Node &1,Node &2);
+实例化1：template void Swap<char>(char,char);//这个显式一般在main里面，就一行。
+实例化2：Swap<char>(x,y);//这个更常用。
+Swap<>(x,y)意思是强制用模板（如果没有<>，碰到非模板的Swap，就优先调用非模板）
+调用函数优先级1完全匹配。2提升转换（char和short自动转为int，float自动 转换为double）。3标准转换（int转换为char，long转换为double，char到float）
+int global = 1000;或者extern int global = 1000;//外部链接性，在其他文件引用 用extern int global，跟着变了(不能赋值，因为是引用，赋值就变为外部链接性)
+static int one_file = 50;//内部连接性
+int main(){...static int count = 0};//无连接性
+namespace Jill{double fun(int n){...}double fetch;struct Node{...};}//注意函数没有分号。
+using Jill::fetch;就可以用名称空间里的fetch了，再double fetch;错误！
+using namespace Jill;有风险，用using Jill::fetch消除二义性（两个空间里有相同名称的变量）
+stoi把base进制的转化为10进制

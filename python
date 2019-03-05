@@ -1,0 +1,30 @@
+__init__.py 保证该py所在的目录为package，在里面导入一些模块，其他地方可以从该包中导入这些模块。
+如from wms.models import Dataset, Server, Variable, Style 这些包并不是在models目录中，而在更深的目录，不过在models目录中的__init__.py中导入。就可以直接用models
+items()返回的是列表对象。而iteritems()返回的是iterator对象,在两者都可在for循环里使用。
+pairs = dict.items()返回键值对的列表，是元组的列表噢
+pairs = zip(d.keys(), d.values())
+pairs = zip(d.iterkeys(), d.itervalues())
+pairs = [(x,y) for (x,y) in d.iteritems()]
+
+>>> a = dict(one=1, two=2, three=3)
+>>> b = {'one': 1, 'two': 2, 'three': 3}
+>>> c = dict(zip(['one', 'two', 'three'], [1, 2, 3]))
+>>> d = dict([('two', 2), ('one', 1), ('three', 3)])
+>>> e = dict({'three': 3, 'one': 1, 'two': 2})
+>>> a == b == c == d == e
+True
+
+xrange 用法与 range 完全相同，所不同的是生成的不是一个list对象，而是一个生成器。在for里面两者结果一样，效率xrange更优
+Python 没有块作用域。最小的范围是函数。for里用的变量在for外面也可以用
+file_name='{}.html'.format(slug) #66666666加html
+print('{}个红球,{}个黄球,{}个绿球'.format(a,b,c))
+for i in ... i到最后一个不再+1
+'ab:'.split(':') == ['ab','']
+
+import a
+dir(a)查看属性
+
+实践证明，list和array作为参数获取.nc数据都可以！！！无区别
+numpy netCDF4 参数可是列表也可是数组  a.variables['lon'][[1,2,3],[1],2,:]，都行！！！
+b = a.variables['lon'][[1,2,3],[1],2,:]
+b = b[:,:,:,index] index可以是array也可以是list

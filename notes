@@ -1,0 +1,14 @@
+三、解决办法
+上面的命令不起作用的原因，往往是因为 /etc/init.d/httpd 中用的是系统自带的 apache，但我们改的是 yum安装的apache的配置文件。既然知道原因了，解决就简单了，有两种办法：
+1、把 /etc/init.d/httpd 中的apache改为我们要使用的那个
+2、在要使用的apache的安装目录下启动apache，如在 /usr/local/apache2/bin 下执行命令：
+$ sudo apachectl restart
+
+IntelliSense for CSS class names 等号必须紧贴，没有空格
+
+runserver是基于标准库中的socket服务器下的简单服务器。针对本地开发它提供了诸如代码重载等许多有用的工具。但不适合产品部署的安全性。
+DEBUG=os.environ.get('DEBUG','on') == 'on'
+SECRET_KEY=os.environ.get('SECRET_KEY',os.urandom(32))
+ALLOW_HOSTS=os.environ.get('ALLOWED_HOSTS','localhost').split(',')
+$export DEBUG=off
+$export ALLOWED_HOSTS=localhost,example.com
