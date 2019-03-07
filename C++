@@ -1,4 +1,4 @@
-strlen(不包括结束符);sizeof();a.size(不包括结束符)
+﻿strlen(不包括结束符);sizeof();a.size(不包括结束符)
 数组的话length=sizeof(a)/sizeof(int)
 string使用内置的new和delete
 new初始化数组为0，char初始化为ascii的0，*next的next也是0；而初始化数组和字符串都是随机的（有[]的那种）
@@ -62,3 +62,5 @@ namespace Jill{double fun(int n){...}double fetch;struct Node{...};}//注意函�
 using Jill::fetch;就可以用名称空间里的fetch了，再double fetch;错误！
 using namespace Jill;有风险，用using Jill::fetch消除二义性（两个空间里有相同名称的变量）
 stoi把base进制的转化为10进制
+return *i-- 这个i不会变。--i会变
+1/2这个是整数，应该1/2.0
