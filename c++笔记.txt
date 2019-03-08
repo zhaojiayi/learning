@@ -7,3 +7,4 @@ setw默认右对齐。要左对齐cout<<setw(6)<<ios_base::left<<-1.1;
 cout<<setw(6)<<left<<-1.1;//也可以一次性
 cout.setf(ios::hex,ios::basefield)是永久的（这里要加个basefield，不知道为什么。），要消除cout.unsetf(ios::hex).
 cout.set(..)是永久的，消除cout.unsetf(ios::adjustfield|ios::basefield|ios::floatfield)
+while(cin>>a);假设遇到与a（int）不匹配的，返回false终止，回车这些只是再来一次循环。123Z,a将被灌入123，执行一次内循环然后终止（理解）
