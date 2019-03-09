@@ -1,4 +1,4 @@
-开根号pow严重超时，用sqrt好
+﻿开根号pow严重超时，用sqrt好
 cout<<setfill('0')<<setw(2)<<i; //setw(2)是一次性的就输出一次。区别！！！
 cout<<fixed<<setprecision(1)<<(double)a4sum/a4count<<' '; //fixed是永久的，指定是小数范围 ，setprecision是永久的。保留几位
 fixed是iostream的，set开头的是iomanip的
@@ -7,3 +7,5 @@ setw默认右对齐。要左对齐cout<<setw(6)<<ios_base::left<<-1.1;
 cout<<setw(6)<<left<<-1.1;//也可以一次性
 cout.setf(ios::hex,ios::basefield)是永久的（这里要加个basefield，不知道为什么。），要消除cout.unsetf(ios::hex).
 cout.set(..)是永久的，消除cout.unsetf(ios::adjustfield|ios::basefield|ios::floatfield)
+while(cin>>a);假设遇到与a（int）不匹配的，返回false终止，回车这些只是再来一次循环。123Z,a将被灌入123，执行一次内循环然后终止（理解）
+无比重要！！！输入字符串，cin输入直接回车将无限停留（空行输入不行），getline将舍弃回车，意思是空行可行（跳过）。cin.get(..)空行报错
