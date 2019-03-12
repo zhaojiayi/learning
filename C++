@@ -36,7 +36,7 @@ int *pf(int)和int (*pf)(int)不一样
 括号优先级比*高。
 fc(int,double*)或fc(int,double[])作为原型都OK,等价。
 int * (*p1)(double *,int)=f1;(*p1)(av,3)是返回的int的地址。*(*p1)(av,3)返回的才是int的值。
-double×* (*pa[3])(double*,int) = {f1,f2,f3}牛逼儿
+double* (*pa[3])(double*,int) = {f1,f2,f3}牛逼儿
 函数指针的应用：void(double (*func)(int),int s){...(*func)(s)...} func(s)也ok
 delete a;a = NULL注意顺序
 bool类型 return fun1()||func1()||func1();这样都OK，而且很重要
@@ -48,7 +48,8 @@ bool类型 return fun1()||func1()||func1();这样都OK，而且很重要
 for循环外部限制越界条件，里面再有i++时也要注意越界，要在内部if中限定！！
 vector.size()是无符号数，判定时一定要转化成int！！！
 ififelse,加括号保险
-stringstream io;io<<setw(4)<<setfill('0')<<original;task=io.str();真的牛逼！！格式转化！！！
+＃include <sstream> 
+stringstream io;io<<setw(4)<<setfill('0')<<original;string task=io.str();真的牛逼！！格式转化！！！
 io.str("")清空io。io.clear()不行，如果io里面的东西没有及时>>出来。
 C++可以让函数名相同，但参数必须不同。不同的返回值，参数和函数名相同，不被允许。是以下几点的基础！！！！
 如果有多个原型，编译器在选择原型时，非模板优先于显示具体化和普通模板，显式具体化优先于普通模板！！！承接上一条。
@@ -63,8 +64,9 @@ int main(){...static int count = 0};//无连接性
 namespace Jill{double fun(int n){...}double fetch;struct Node{...};}//注意函数没有分号。
 using Jill::fetch;就可以用名称空间里的fetch了，再double fetch;错误！
 using namespace Jill;有风险，用using Jill::fetch消除二义性（两个空间里有相同名称的变量）
-stoi把base进制的转化为10进制
+int stoi把base进制的转化为10进制
+string& to_str(intdoublelong...ok);
 return *i-- 这个i不会变。--i会变
 1/2这个是整数，应该1/2.0
-指针结构体 struct a;&a->value非法。
+指针结构体 struct a;&a->value非法。优先级问题
 10/3.0即可将结果变为浮点数（默认6位有效位包括整数和小数）
