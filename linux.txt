@@ -1,0 +1,5 @@
+Linux准确的来说是内核，但也用来代指内核+一大堆其他软件（工具和库）所构成的完整操作系统
+POSIX（portable operating system interface，可移植操作系统接口）
+电气和电子工程师协会（IEEE，全称是Institute of Electrical and Electronics Engineers）
+内核：管理和分配计算机资源（CPU、RAM、设备）的核心层软件
+CPU在两种不同的状态下运行：用户态和核心态
