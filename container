@@ -12,3 +12,4 @@ int tolower(char c)和toupper(char c) cstring
 it = std::unique (myvector.begin(), myvector.end())后面必须加myvector.resize( std::distance(myvector.begin(),it) )
 大小写转化transform(target.begin(),target.end(),target.begin(),::toupper)这个冒号不理解。非字幕保留
 stoi()可以转换到非数字为止。stoi中的*idx指向的值是第一个非数字的位置
+algorithm的重要算法，比较数组是否相等  bool equal (InputIterator1 first1, InputIterator1 last1,InputIterator2 first2);
