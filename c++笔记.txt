@@ -1,9 +1,41 @@
+﻿scanf和cin一样，都是匹配能匹配的最长长度，剩余的留在缓冲区中。
 开根号pow严重超时，用sqrt好
 cout<<setfill('0')<<setw(2)<<i; //setw(2)是一次性的就输出一次。区别！！！
 cout<<fixed<<setprecision(1)<<(double)a4sum/a4count<<' '; //fixed是永久的，指定是小数范围 ，setprecision是永久的。保留几位
+cout<<scientific<<setprecision(6)<<a;//科学计数法，保留的依然是小数点后的6位数+1位整数，永久
+cout<<hex<<showbase;永久  dec bin
 fixed是iostream的，set开头的是iomanip的
 如果只有fixed，默认保留6位小数（结尾添0）
 setw默认右对齐。要左对齐cout<<setw(6)<<ios_base::left<<-1.1;
 cout<<setw(6)<<left<<-1.1;//也可以一次性
 cout.setf(ios::hex,ios::basefield)是永久的（这里要加个basefield，不知道为什么。），要消除cout.unsetf(ios::hex).
 cout.set(..)是永久的，消除cout.unsetf(ios::adjustfield|ios::basefield|ios::floatfield)
+while(cin>>a);假设遇到与a（int）不匹配的，返回false终止，回车这些只是再来一次循环。123Z,a将被灌入123，执行一次内循环然后终止（理解）
+无比重要！！！输入字符串，cin输入直接回车将无限停留（空行输入不行），getline将舍弃回车，意思是空行可行（跳过）。cin.get(..)空行报错
+*p++地址会变化
+指针p的值是X，则该指针指向以X为首地址的一片内存区域。*p就是这片区域的第一个单位数据类型（可能多个字节）的值。
+指针的类型：去掉声明的变量；指针指向的类型：去掉声明的变量和*
+例如int(*a1)[10]，他指向的类型是int()[10]也就是int[10]
+int a2[10]指针的类型是int[10](去掉声明的变量)。a1指向的类型和a2指针本身的类型是一样的，所以可以结合a1 = &a2。要加个&
+比如int a2;int *a1; a1指向的类型是int,与a2的类型（不见得是指针）一样，所以可以结合a1 = &a2 加个&
+if((fp=fopen("filename",'r'))==NULL){exit(0);}
+exit(0)让程序终止，头文件stdlib.h
+看来C语言的scanf也是保留'\n'在队列里呀
+默认scanf将空格、回车等都保留在队列里，除非显式scanf("\n")，就丢弃了。当然输入数字时是默认跳过在缓冲区的空格回车等
+scanf("%d/%d %d/%d", &a1, &b1, &a2, &b2)//输入格式：1/2 3/7！！！重要，不需要字符串再化简
+scanf("%d,%s\n",&a,str);如果输入正确，逗号,和回车\n都将丢弃不保存在缓冲队列里。
+%d%d时可以用回车、支付表、空格做分隔符。%d,%d只能用逗号，回车都不行！
+scanf%s空格不能赋值，用gets
+scanf和cin一样，都是匹配能匹配的最长长度，剩余的留在缓冲区中。
+getchar可以吃掉缓冲区的回车，但是不能接受键盘输入的回车（意思是一直只输入回车，将死循环）
+while(!feof(in)){char ch =fgetc(in);fputc(ch,out);}！！！理解每读完一个数据，in顺序向后移动一个位置，所以才能检测eof(in)
+char str[10];fgets(str,10,in);fput(str,out);!!理解（fgets也返回字符串首地址,错误返回NULL）
+ch = getchar();putchar(ch);
+fprintf(fp,"%d%d",a,b);fscanf(fp,"%d%d",&a,&b);
+while(!feof(fp)){...}rewind(fp)使指针重新指向开头
+顺序、选择、循环
+所有非0的if都是真
+int 最大值是10位2开头的 long是19位9开头，unsigned long是20位1开头
+bool是1个字节
+C++结构体，a[6]是深拷贝，*a是浅拷贝
+优先级：()>[]>*
