@@ -28,3 +28,29 @@ dir(a)查看属性
 numpy netCDF4 参数可是列表也可是数组  a.variables['lon'][[1,2,3],[1],2,:]，都行！！！
 b = a.variables['lon'][[1,2,3],[1],2,:]
 b = b[:,:,:,index] index可以是array也可以是list
+//整数整除 **幂
+不能在数字前面添0
+print(99,"ads","adsa")自动加空格和回车
+type四种 bool、int、float、str  都可以强制转换 eg:str(1)
+※字符串是不可变的，不能通过下标改。列表可以的
+※index统统可以是正的也可以是负的
+分片[start:end;step] 提取到end-1  end=-1则是提取到倒数第二个（包括他）为止 0是第一个，-1是最后一个！！分片不改变原列表
+※字符串：len(str);list=str.split(',')分成列表，缺省是换行符、空格、字符包;str=','.join(list)变成字符串;str.startwith(substr)返回bool;str.find(substr)/rfind;str.count(substr);str.isalnum()判断是否全是字母或数字
+str.replace(origin,target,count)最多修改count处 注意避免把所有的都换了
+元组和列表不要求所含元素的种类相同
+split出现连续的分隔符，会出现空元素。
+列表不同与字符串，是可变的，通过下标改.列表允许相同的元素出现
+※list.append(one_element);list1.extend(list2)或者list1+=list2;list.insert(index,one_element);del list[index]通过index删除;list.remove(element)通过内容删除（第一个）;list.pop()==list.pop(-1);list.index(element)返回index;list.count(element)出现的次数
+sorted(list)list不变；list.sort()list改
+变。默认升序
+list或者tuple：a,b,c,d = list1分别赋值
+list用等号相当于引用，标签。三种复制方法list1 = list2.copy();list1 = list(list2);list1 = list2[:]
+☆字典的键不可变，所以必须是字符串或者元组。
+字典直接赋值添加元素！！！
+dict1.update(dict2)如果重复，dict2会取代dict1
+dict.clear()删除所有；dict.get(key,"error output")没有的话输出error output；第二个参数缺省，不存在返回None不报错。通过下标键访问，不存在报错。
+dict1.keys()，py2返回键的列表（python3返回dict_keys,需要显式调用list()来转换成列表）
+※dict1.values();dict1.items()返回元组的列表。记住items是字典的！！！
+in判断，list可以；dict可以，是判断键
+set(dict1)只有键被作用
+set中的交集运算符&,并集|，亦或^,还可以-，<=判断子集<判断真子集，返回bool。返回空集相当于false
