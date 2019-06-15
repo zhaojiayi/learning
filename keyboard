@@ -51,3 +51,10 @@ lsmod
 modinfo rtl8723be
 sudo modprobe -r rtl8723be
 sudo modprobe rtl8723be
+which 查看终端命令的位置
+echo $PATH 查看环境变量
+临时export PATH=/opt/STM/STLinux-2.3/devkit/sh4/bin:$PATH
+/etc/bash.bashrc环境变量可作用所有用户，sudo su
+/etc/profile 亲测sudo su的python不作用
+回收站 /home/zhaojiayi/.local/share/Trash
+"nohup nautilus &" 解决崩溃，程序不随终端的关闭而终止

@@ -64,6 +64,9 @@ int main(){...static int count = 0};//无连接性
 namespace Jill{double fun(int n){...}double fetch;struct Node{...};}//注意函数没有分号。
 using Jill::fetch;就可以用名称空间里的fetch了，再double fetch;错误！
 using namespace Jill;有风险，用using Jill::fetch消除二义性（两个空间里有相同名称的变量）
+stoi把base进制的转化为10进制
+long和long long都是8字节，最大值：9223372036854775807（19位）。int最大值2147483647（10位）
+unsigned int a = 0;a-1之后变为unsigned的最大值
 int stoi把base进制的转化为10进制
 string& to_str(intdoublelong...ok);
 return *i-- 这个i不会变。--i会变
