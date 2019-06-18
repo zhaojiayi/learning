@@ -3,3 +3,14 @@ POSIX（portable operating system interface，可移植操作系统接口）
 电气和电子工程师协会（IEEE，全称是Institute of Electrical and Electronics Engineers）
 内核：管理和分配计算机资源（CPU、RAM、设备）的核心层软件
 CPU在两种不同的状态下运行：用户态和核心态
+超级用户ID为0
+init进程最牛逼，主要任务为创建并监控系统运行所需的一系列进程
+文本、数据、堆、栈。fork之后只读文本由子父进程共享，其余的创建副本，互不影响
+目标库：将通常是逻辑相关的一组函数代码加以编译，并置于一个文件中，供其他应用程序调用。
+IPC进程间通信
+☆系统调用将CPU从用户态切换到核心态，以便CPU访问受到保护的内核内存（重要表述）
+一次系统调用一般大于0.3微妙。C语言返回的开销是系统调用的1/20。（例子）
+调用系统调用xyz()等价于调用外壳函数(wrapper)，由wrapper函数去调用系统调用xyz()
+GNU C语言函数库glibc
+$ldd myprog | grep libc  针对某个与glibc动态链接的可执行文件，运行ldd找到依赖文件，再找libc。找到glibc的路径。
+errno.h有几个。errno全局变量定义在其中一个.h文件中

@@ -23,3 +23,12 @@ git checkout -b dev origin/dev 第一个dev可以变
 ☆在克隆仓库时，Git 通常会自动创建一个名为 master 的分支来跟踪 origin/master。这正是git push 和 git pull 一开始就能正常工作的原因。当然，你可以随心所欲地设定为其它跟踪分支，比如origin 上除了 master 之外的其它分支。刚才我们已经看到了这样的一个例子：git checkout -b [分支名] [远程名]/[分支名]
 
 ☆从远程分支 checkout 出来的本地分支，称为_跟踪分支(tracking branch)_。跟踪分支是一种和远程分支有直接联系的本地分支。在跟踪分支里输入git push，Git 会自行推断应该向哪个服务器的哪个分支推送数据。反过来，在这些分支里运行 git pull 会获取所有远程索引，并把它们的数据都合并到本地分支中来。
+添加
+git remote set-url origin "https://..."
+git config remote.origin.url "https://..."
+删除
+git remote rm origin
+全局变量添加
+git remote --global set-url origin "https://..."
+git config --global remote.origin.url "https://..."
+
