@@ -1,1 +1,2 @@
 ctrl k 匹配下一个
+c_cpp_properties.json中，includePath不递归，browse.path递归
