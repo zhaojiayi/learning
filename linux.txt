@@ -14,3 +14,6 @@ IPC进程间通信
 GNU C语言函数库glibc
 $ldd myprog | grep libc  针对某个与glibc动态链接的可执行文件，运行ldd找到依赖文件，再找libc。找到glibc的路径。
 errno.h有几个。errno全局变量定义在其中一个.h文件中
+fcntl.h定义了O_RDONLY等宏
+O_RDONLY O_WRONLY ORDWR在open中不能同时使用
+O_CREAT使用了，即使是只读也有效。此时必须提供mode参数提供权限
