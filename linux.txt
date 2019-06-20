@@ -1,19 +1,29 @@
-Linux׼ȷ����˵���ںˣ���Ҳ������ָ�ں�+һ����������������ߺͿ⣩�����ɵ���������ϵͳ
-POSIX��portable operating system interface������ֲ����ϵͳ�ӿڣ�
-�����͵��ӹ���ʦЭ�ᣨIEEE��ȫ����Institute of Electrical and Electronics Engineers��
-�ںˣ������ͷ���������Դ��CPU��RAM���豸���ĺ��Ĳ�����
-CPU�����ֲ�ͬ��״̬�����У��û�̬�ͺ���̬
-�����û�IDΪ0
-init������ţ�ƣ���Ҫ����Ϊ���������ϵͳ���������һϵ�н���
-�ı������ݡ��ѡ�ջ��fork֮��ֻ���ı����Ӹ����̹���������Ĵ�������������Ӱ��
-Ŀ��⣺��ͨ�����߼���ص�һ�麯��������Ա��룬������һ���ļ��У�������Ӧ�ó�����á�
-IPC���̼�ͨ��
-��ϵͳ���ý�CPU���û�̬�л�������̬���Ա�CPU�����ܵ��������ں��ڴ棨��Ҫ������
-һ��ϵͳ����һ�����0.3΢�C���Է��صĿ�����ϵͳ���õ�1/20�������ӣ�
-����ϵͳ����xyz()�ȼ��ڵ�����Ǻ���(wrapper)����wrapper����ȥ����ϵͳ����xyz()
-GNU C���Ժ�����glibc
-$ldd myprog | grep libc  ���ĳ����glibc��̬���ӵĿ�ִ���ļ�������ldd�ҵ������ļ�������libc���ҵ�glibc��·����
-errno.h�м�����errnoȫ�ֱ�������������һ��.h�ļ���
-fcntl.h������O_RDONLY�Ⱥ�
-O_RDONLY O_WRONLY ORDWR��open�в���ͬʱʹ��
-O_CREATʹ���ˣ���ʹ��ֻ��Ҳ��Ч����ʱ�����ṩmode�����ṩȨ��
+Linux准确的来说是内核，但也用来代指内核+一大堆其他软件（工具和库）所构成的完整操作系统
+POSIX（portable operating system interface，可移植操作系统接口）
+电气和电子工程师协会（IEEE，全称是Institute of Electrical and Electronics Engineers）
+内核：管理和分配计算机资源（CPU、RAM、设备）的核心层软件
+CPU在两种不同的状态下运行：用户态和核心态
+超级用户ID为0
+init进程最牛逼，主要任务为创建并监控系统运行所需的一系列进程
+文本、数据、堆、栈。fork之后只读文本由子父进程共享，其余的创建副本，互不影响
+目标库：将通常是逻辑相关的一组函数代码加以编译，并置于一个文件中，供其他应用程序调用。
+IPC进程间通信
+☆系统调用将CPU从用户态切换到核心态，以便CPU访问受到保护的内核内存（重要表述）
+一次系统调用一般大于0.3微妙。C语言返回的开销是系统调用的1/20。（例子）
+调用系统调用xyz()等价于调用外壳函数(wrapper)，由wrapper函数去调用系统调用xyz()
+GNU C语言函数库glibc
+$ldd myprog | grep libc  针对某个与glibc动态链接的可执行文件，运行ldd找到依赖文件，再找libc。找到glibc的路径。
+errno.h有几个。errno全局变量定义在其中一个.h文件中
+read/write单位为字节
+while((numRead=read(inputFd,buf,BUF_SIZE))>0)这里连续的read偏移量自动调整递进
+lseek(fd,-1,SEEK_END);最后一个字节
+文件描述符0,1,2是自带的，后面自己打开的文件其依次递增
+文件不存在且未指定O_CREAT,错误。
+☆open()调用的flag包括访问模式和状态标志
+这些系统调用函数open/read/write/close/lseek/fcntl，错误统统返回-1。用errno来查看不同错误
+exit(0)正常退出
+用O_CREAT和O_EXCL标志来保持系统调用原子性.还有O_APPEND
+ssize_t/mode_t/size_t都在<sys/types.h>中
+fcntl.h定义了O_RDONLY等宏
+O_RDONLY O_WRONLY ORDWR在open中不能同时使用
+O_CREAT使用了，即使是只读也有效。此时必须提供mode参数提供权限
