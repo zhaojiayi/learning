@@ -24,3 +24,4 @@ lseek(fd,-1,SEEK_END);最后一个字节
 exit(0)正常退出
 用O_CREAT和O_EXCL标志来保持系统调用原子性.还有O_APPEND
 ssize_t/mode_t/size_t都在<sys/types.h>中
+.
