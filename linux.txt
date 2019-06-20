@@ -24,4 +24,6 @@ lseek(fd,-1,SEEK_END);最后一个字节
 exit(0)正常退出
 用O_CREAT和O_EXCL标志来保持系统调用原子性.还有O_APPEND
 ssize_t/mode_t/size_t都在<sys/types.h>中
-.
+fcntl.h定义了O_RDONLY等宏
+O_RDONLY O_WRONLY ORDWR在open中不能同时使用
+O_CREAT使用了，即使是只读也有效。此时必须提供mode参数提供权限
