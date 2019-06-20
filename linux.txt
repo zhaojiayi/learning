@@ -14,3 +14,13 @@ IPC进程间通信
 GNU C语言函数库glibc
 $ldd myprog | grep libc  针对某个与glibc动态链接的可执行文件，运行ldd找到依赖文件，再找libc。找到glibc的路径。
 errno.h有几个。errno全局变量定义在其中一个.h文件中
+read/write单位为字节
+while((numRead=read(inputFd,buf,BUF_SIZE))>0)这里连续的read偏移量自动调整递进
+lseek(fd,-1,SEEK_END);最后一个字节
+文件描述符0,1,2是自带的，后面自己打开的文件其依次递增
+文件不存在且未指定O_CREAT,错误。
+☆open()调用的flag包括访问模式和状态标志
+这些系统调用函数open/read/write/close/lseek/fcntl，错误统统返回-1。用errno来查看不同错误
+exit(0)正常退出
+用O_CREAT和O_EXCL标志来保持系统调用原子性.还有O_APPEND
+ssize_t/mode_t/size_t都在<sys/types.h>中
