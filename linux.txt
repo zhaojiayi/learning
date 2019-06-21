@@ -1,4 +1,4 @@
-Linux准确的来说是内核，但也用来代指内核+一大堆其他软件（工具和库）所构成的完整操作系统
+﻿Linux准确的来说是内核，但也用来代指内核+一大堆其他软件（工具和库）所构成的完整操作系统
 POSIX（portable operating system interface，可移植操作系统接口）
 电气和电子工程师协会（IEEE，全称是Institute of Electrical and Electronics Engineers）
 内核：管理和分配计算机资源（CPU、RAM、设备）的核心层软件
@@ -17,6 +17,7 @@ errno.h有几个。errno全局变量定义在其中一个.h文件中
 read/write单位为字节
 while((numRead=read(inputFd,buf,BUF_SIZE))>0)这里连续的read偏移量自动调整递进
 lseek(fd,-1,SEEK_END);最后一个字节
+lseek(fd,0,SEEK_CUR);返回现在的offset
 文件描述符0,1,2是自带的，后面自己打开的文件其依次递增
 文件不存在且未指定O_CREAT,错误。
 ☆open()调用的flag包括访问模式和状态标志
@@ -25,5 +26,12 @@ exit(0)正常退出
 用O_CREAT和O_EXCL标志来保持系统调用原子性.还有O_APPEND
 ssize_t/mode_t/size_t都在<sys/types.h>中
 fcntl.h定义了O_RDONLY等宏
+fcntl这个函数很强大
 O_RDONLY O_WRONLY ORDWR在open中不能同时使用
 O_CREAT使用了，即使是只读也有效。此时必须提供mode参数提供权限
+进程级的文件描述符表、系统级的打开文件表(句柄)、文件系统的i-node表
+两个不同的文件描述符，若指向同一打开文件句柄，将共享同一文件偏移量
+dup是用来指定新的文件描述符，指向同一打开文件句柄
+进程下的所有线程将共享同一文件描述符表 
+pread和pwrite在修改后offset处读写后立即恢复，不影响当前偏移量，用于多线程防止竞争
+readv()分散输入和writev()集中输出(原子性一次性)
