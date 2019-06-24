@@ -32,3 +32,5 @@ git remote rm origin
 git remote --global set-url origin "https://..."
 git config --global remote.origin.url "https://..."
 
+HEAD~是主干的退回。HEAD^是选择分支的退回。HEAD^就是主干退回，HEAD^2就是分支退回
+git log --graph --decorate --oneline --simplify-by-decoration --all
