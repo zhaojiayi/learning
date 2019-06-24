@@ -20,10 +20,10 @@ cin.get(char)可重复使用char。
 cin.get(ch);→while(cin.fail()==false);while(cin.get(ch));while(cin);while(ch!=EOF);while((ch=cin.get())!=EOF);while(cin>>ch);
 cin.get(ch)与ch=cin.get()有区别，159页。cin.get(ch)返回cin。
 while(!(cin>>golf[i]))遇到非法输入，不会赋值，但输入存在。
-cin.clear()重置输入，使得遇到非法输入后能够再次输入，但非法输入还存在。再用while(cin.get()!='\n') continue;删除错误输入。
+☆cin.clear()重置输入，使得遇到非法输入后能够再次输入，但非法输入还存在。再用while(cin.get()!='\n') continue;删除错误输入。或者cin.sync()
 cin.get(char);while(char!='\n')cin.get(char);//cin.get()保留换行符！！
 cin.getline(info,100,':')将读到:',并在队列里丢弃':，'\n'会读到info里去。本来默认是读到并丢弃'\n'
-cin.get(info,100,'#')将读到'#'，但会保留#在队列里。（下一个cin.get()就是#）
+cin.get(info,100,'#')将读到'#'，但会保留#在队列里。（下一个cin.get()就是#）自动将100个变成\0,意思只能输入99个
 二维数组 char *a[5]是5×n。char a[5][n]是5×n。注意。
 文件输入中，inFile.eof()只能检测eof，inFile.fail()检测eof和类型不匹配。
 int value;inFIle>>value;while(inFile.good()){...;inFile>>value;}固定格式。while(inFile>>value)也行
