@@ -50,3 +50,5 @@ UID为0就是ROOT
 [a-zA-Z0-9/.]
 密码文件和shadow密码文件
 pwd.h的struct passwd中的密码pw_passwd字段，在未启用shadow时才有效。一般都启用了shadow，pw_passwd无效，为x。转而看shadow.h中struct spwd中的sp_pwdp字段（一般会Permission denied，必须su）
+------10时间-------------
+t=time(NULL);返回自1970以来的秒数,time_t是一个有符号
