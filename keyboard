@@ -18,11 +18,11 @@ cp -r dir1 dir2     (recursive copy) 复制整个目录.若目录 dir2 不存在
 .rpm文件用rpm管理
 下载tar.gz。解压后 ./configure --prefix=/地址。之后编译 make。之后安装sudo make install需要root。
 df 查看磁盘情况
-zip [参数] [打包后的文件名] [打包的目录路径]
+zip [参数] [打包后的文件名] [要打包的目录路径file1 file2]
 一般 zip -r .....
 gunzip等于gzip -d
 gzip -tv filename 显示压缩文件是否完好
-tar -czvf filename.tar.gz objectfilename c指导创建归档文件 v用于显示命令执行过程 f用于制定归档文件的文件名 z调用gzip程序
+tar -czvf filename.tar.gz file1 file2 c指导创建归档文件 v用于显示命令执行过程 f用于制定归档文件的文件名 z调用gzip程序
 tar -xzvf filename.tar.gz 解压
 vim filename初始化。I插入模式。O在下方插入一行。w filename保存。q退出。:wq保存文件并退出。:q!放弃保存并退出
 :向前查找 ？向后查找
@@ -59,3 +59,7 @@ printenv查看所有环境变量
 /etc/profile 亲测sudo su的python不作用
 回收站 /home/zhaojiayi/.local/share/Trash
 "nohup nautilus &" 解决崩溃，程序不随终端的关闭而终止
+man sysconf 查看手册
+sudo fdisk -l 列表磁盘
+ls -li file1 file2 查看inode
+ln originfile newfile 硬链接   ln -s软链接
