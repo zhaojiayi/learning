@@ -52,6 +52,7 @@ UID为0就是ROOT
 pwd.h的struct passwd中的密码pw_passwd字段，在未启用shadow时才有效。一般都启用了shadow，pw_passwd无效，为x。转而看shadow.h中struct spwd中的sp_pwdp字段（一般会Permission denied，必须su）
 ------10时间12系统和进程信息-------------
 t=time(NULL);返回自1970以来的秒数,time_t是一个有符号
+pathname可以是当前的，也可以是/
 /proc/PID和dev/fd
 /proc虚拟的，因为其不存在与磁盘上，是内核在进程访问动态生成的
 ------13IO--------------
