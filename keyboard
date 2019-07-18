@@ -1,4 +1,4 @@
-pwd显示当前目录
+﻿pwd显示当前目录
 touch 建立空的文本文件
 cat -n filename 显示行号
 mkdir创建目录 rmdir删除目录（目录为空才行）
@@ -63,3 +63,4 @@ man sysconf 查看手册
 sudo fdisk -l 列表磁盘
 ls -li file1 file2 查看inode
 ln originfile newfile 硬链接   ln -s软链接
+kill -STOP pid ;  kill -CONT pid ；kill -ABRT pid
