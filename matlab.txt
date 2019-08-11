@@ -1,0 +1,22 @@
+“”是字符串‘’是字符。['ac','bc']是1×4      ["ac","bd"]是1×2
+num2str(c)
+max()，mean(),sum()也是，其实是每个列的最大值。只有一行时就是一个最大值
+[maxA,location] = max(A) location其实是行索引。只有一行时就是列索引
+disp('hello world')输出去掉引号
+clc 函数清空命令行窗口。
+hold on。在使用 hold off 或关闭窗口之前，当前图窗窗口中会显示所有绘图。
+legend('sin','cos')图例
+plot([0,n],[m,m])这样也可以
+for循环里面sample(k)指的是增加列
+*使用分号，取消输出
+mean(A,dim)dim是看行还是列，默认1是每个列的mean，2是每个行的mean
+使用 sum 和 diag 函数可以获取主对角线上的元素的总和: sum(diag(A))
+A = B(:,[1 3 2 4])交换中间两列
+A=(0:9)是1×10的数组
+n = (0:9)'; pows = [n  n.^2  2.^n]
+format 函数控制所显示的值的数值格式。此函数仅影响数字显示方式
+如果语句无法容纳在一行中，请使用省略号（三个句点）...
+sum(A(:,end))计算最后一列的总和
+X(:,2) = []删除第二行
+>> save myfile.mat
+>> load myfile.mat变量保存
