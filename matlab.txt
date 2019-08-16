@@ -11,12 +11,57 @@ for循环里面sample(k)指的是增加列
 *使用分号，取消输出
 mean(A,dim)dim是看行还是列，默认1是每个列的mean，2是每个行的mean
 使用 sum 和 diag 函数可以获取主对角线上的元素的总和: sum(diag(A))
-A = B(:,[1 3 2 4])交换中间两列
-A=(0:9)是1×10的数组
+A = B(:,[1 3 2 4])交换中间两列     //索引
+A=(0:9)是1×10的数组。只能是行，换成列要转置
+A = 0:pi/100:2*pi;也可以，也是行
 n = (0:9)'; pows = [n  n.^2  2.^n]
 format 函数控制所显示的值的数值格式。此函数仅影响数字显示方式
 如果语句无法容纳在一行中，请使用省略号（三个句点）...
 sum(A(:,end))计算最后一列的总和
-X(:,2) = []删除第二行
+X(:,2) = []删除第二列
 >> save myfile.mat
 >> load myfile.mat变量保存
+k = find(isprime(A))'索引是一列数完再下一列。
+A(k)直接输出索引对应的值q
+※sampleMean(k) = mean(currentData)%按列来的
+p = perms(1:4);排列组合
+prod(A)每一列的乘积
+{}大括号异构矩阵C{1}检索第一个矩阵；>> M = cell(8,1)初始化8×1矩阵
+s = 'Hello'是个1×5的char矩阵。a=double(s)和s=char(a)互为逆转换
+S = char('A','rolling','stone','gathers','momentum.')逗号是5×9(最大的)，注意这里是列了，不同
+C = cellstr(S) 和S = char(C)互为逆过程。就是异构的矩阵
+S(2).name = 'Toni Miller';
+S(2).score = 91;
+S(2).grade = 'A-';
+也可以使用一个语句添加整个元素：
+S(3) = struct('name','Jerry Garcia','score',70,'grade','C')
+scores = [S.score]每个结构体的score合并成一组行向量
+[N1 N2 N3] = S.name分别赋值
+X = inv(A)求逆 d = det(A)行列式  c = cond(A)运算的条件数，它指示矩阵求逆结果的精度。条件数的范围是从 1（数值稳定的矩阵）到 Inf（奇异矩阵）
+Ax = b 时，常常会误用 inv。从执行时间和数值精度方面而言，求解此方程的最佳方法是使用矩阵反斜杠运算符，即 x = A\b
+求范数v = [2 0 -1];[norm(v,1) norm(v) norm(v,inf)]
+x = b/A表示使用 mrdivide 获得的矩阵方程 xA = b 的解。
+x = A\b表示使用 mldivide 获得的矩阵方程 Ax = b 的解。
+rank(A)求秩;mean(D)平均数, std(D)标准差(都是对列进行处理)
+pinv(A) 是 A 的伪逆。如果 Ax = b 没有精确解，则 pinv(A) 将返回最小二乘解 x = pinv(A)*b。通过A*pinv(A)*b验证是否等于b
+ 对多变量统计数据使用列向分析。数据集中的每一列都代表一个变量，每一行都代表一个观测值
+c3 = count(:,3); % Data at intersection 3
+c3NaNCount = sum(isnan(c3))检查第三列是否有NaN的值。
+isnan 返回一个大小与 c3 相同的逻辑向量，并且通过相应条目指明数据中 24 个元素内的每个元素是存在 (1) 还是缺少 (0) NaN 值。
+关于plot，X和Y都是按纵坐标来算。X和Y都可以是多×多的。※plot([2:5])只有一个向量参数，就是纵坐标，默认横坐标是1,2,3,4
+c3m(outliers) = NaN;outliers是逻辑矩阵。通过逻辑矩阵中的1来复制NaN
+※exp_pdf = @(t)(1/mu1)*exp(-t/mu1); 这个很重要，作为纵坐标y=exp_pdf(t)   t是横坐标矩阵
+sqr = @(x) x.^2;      a = sqr(5)
+ones(size(tdata))生成一样size的1矩阵
+ones([3 4])3×4的矩阵
+hist(c) 是计数的，横坐标是c的值   bar(c)横坐标是索引，纵坐标是c的值
+function r = rank(A,tol)位于rank.m中
+--------------绘图-------------------
+xlabel('x = 0:2\pi')
+ylabel('Sine of x')
+title('Plot of the Sine Function','FontSize',12)
+※多对组合※plot(x,y,x,y2,x,y3)
+legend('sin(x)','sin(x-.25)','sin(x-.5)')图的标志
+plot(x,y,'color_style_marker')style线形省略了不显示线形
+subplot(m,n,p) 图是m×n的矩阵，选第p个
+subplot(3,1,3); plot(sin(x).*cos(x))
