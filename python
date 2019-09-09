@@ -1,4 +1,4 @@
-__init__.py 保证该py所在的目录为package，在里面导入一些模块，其他地方可以从该包中导入这些模块。
+﻿__init__.py 保证该py所在的目录为package，在里面导入一些模块，其他地方可以从该包中导入这些模块。
 如from wms.models import Dataset, Server, Variable, Style 这些包并不是在models目录中，而在更深的目录，不过在models目录中的__init__.py中导入。就可以直接用models
 items()返回的是列表对象。而iteritems()返回的是iterator对象,在两者都可在for循环里使用。
 pairs = dict.items()返回键值对的列表，是元组的列表噢
@@ -54,3 +54,11 @@ dict1.keys()，py2返回键的列表（python3返回dict_keys,需要显式调用
 in判断，list可以；dict可以，是判断键
 set(dict1)只有键被作用
 set中的交集运算符&,并集|，亦或^,还可以-，<=判断子集<判断真子集，返回bool。返回空集相当于false
+---------------------
+列表推导式[num for num in range(1,6) if num%2==1]
+字典推导式(letter = 'letter')   [letter:word.count(letter) for letter in word]  优化[letter:word.count(letter) for letter in set(word)]
+集合推导式 类似于列表推导式{}
+元组没有推导式
+(num for num in range(1,6))是生成器推导式，返回一个生成器对象。用list转换之只能转换一次
+用if thing is None区分None和False
+def function(*args):收集的是元组的形式。(**kwargs)收集的是字典
