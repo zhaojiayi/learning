@@ -1,0 +1,9 @@
+求协方差矩阵，一般是列是维度，行是观测值
+PCA的协方差，列是照片数(观测值)，行是维度
+协方差是维度*维度
+--------------
+cd(strcat('s',num2str(i)))  从当前目录打开进入目录
+a=imread(strcat(num2str(j),'.pgm'));巧妙运用strcat打开
+TrainFiles = dir(TrainDatabasePath);返回的是结构体
+T = [T temp]。在迭代中增加列很好使。要先T=[]
+repmat(A,dimr,dimc)矩阵A在行和列上的重复(矩阵A一起重复，看成元素)
