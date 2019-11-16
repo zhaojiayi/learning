@@ -1,0 +1,8 @@
+mysql -h host -u zhaojiayi -p123456  密码和在一起，或者换行
+show databases;，再use 'database_name'
+SELECT DATABASE()；看目前的数据库
+SELECT USER()；看目前的用户
+DESCRIBE 'table_name';看整个表
+drop table 'table_name' 删除所有，包括整个表属性和内容
+truncate table 'table_name'  只删内容不删属性
+delete from 'table_name' where...  一行一行的删
