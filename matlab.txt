@@ -23,7 +23,7 @@ X(:,2) = []删除第二列
 >> save myfile.mat
 >> load myfile.mat变量保存
 k = find(isprime(A))'索引是一列数完再下一列。
-A(k)直接输出索引对应的值q
+A(k)直接输出索引对应的值q。索引是一列数完再下一列
 ※sampleMean(k) = mean(currentData)%按列来的
 p = perms(1:4);排列组合
 prod(A)每一列的乘积
@@ -61,6 +61,8 @@ function r = rank(A,tol)位于rank.m中
 dec2bin(0:(2^4-1), 4)//0000一直到1111，还可以规定长度
 A = abs(dec2bin(0:2^4-1,4))-48
 B = null(G,'r')通解零空间
+orth(A)求标准正交基
+randn(a,b) 标准正太分布 a*b的矩阵
 --------------绘图-------------------
 xlabel('x = 0:2\pi')
 ylabel('Sine of x')
