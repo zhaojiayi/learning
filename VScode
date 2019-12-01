@@ -19,3 +19,6 @@ editor.action.triggerSuggest触发建议
   "key": "alt+pagedown",
   "command": "workbench.action.navigateForward"
 }前进
+
+jedi关于python的intelligence设置
+hexdump查看二进制

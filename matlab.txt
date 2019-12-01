@@ -63,6 +63,7 @@ A = abs(dec2bin(0:2^4-1,4))-48
 B = null(G,'r')通解零空间
 orth(A)求标准正交基
 randn(a,b) 标准正太分布 a*b的矩阵
+dec2bin(num,digs)还有位数的
 --------------绘图-------------------
 xlabel('x = 0:2\pi')
 ylabel('Sine of x')
