@@ -7,6 +7,7 @@ touch filename 创建文件
 ls -a查看包含隐藏文件 -l查看日期
 grep kwd filename 在文本里查找kwd所在的一行，有空格加‘’
 ls /dev/ | grep kwd组合☆
+win下 findstr
 find需要目录，locate不需要
 find -name -type(f文件,d目录) -atime使用 -mtime修改 -print +之前 -最近
 rm 删除 要-i -r删除目录下所有并删除目录

@@ -1,8 +1,20 @@
-mysql -h host -u zhaojiayi -p123456  密码和在一起，或者换行
+mysql -h host -u zhaojiayi -p123456  密码和在一起，或者换行 --local-infile=1解决load data问题
+mysql -h 127.0.0.1 -u root -p
+shell:   \connect root@localhost:3306
 show databases;，再use 'database_name'
 SELECT DATABASE()；看目前的数据库
 SELECT USER()；看目前的用户
 DESCRIBE 'table_name';看整个表
 drop table 'table_name' 删除所有，包括整个表属性和内容
 truncate table 'table_name'  只删内容不删属性
-delete from 'table_name' where...  一行一行的删
+delete from 'table_name' where...  一行一行的删 DELETE FROM pet;整个表的内容都删
+UPDATE pet SET birth = '1989-08-31' WHERE name = 'Bowser'; 修改
+ORDER BY species, birth DESC; 先升序再降序
+SHOW WARNINGS;显示警告
+SELECT '2018-10-31' + INTERVAL 1 DAY;直接运算
+-----
+ SELECT name, birth, CURDATE(),        这个列是全局变量
+ TIMESTAMPDIFF(YEAR,birth,CURDATE()) AS age
+ FROM pet ORDER BY name;
+-----
+
