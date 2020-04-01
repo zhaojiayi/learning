@@ -64,5 +64,6 @@ man sysconf 查看手册
 sudo fdisk -l 列表磁盘
 ls -li file1 file2 查看inode
 ln originfile newfile 硬链接   ln -s软链接
+ctrl+alt+up/down 工作区切换
 kill -STOP pid ;  kill -CONT pid ；kill -ABRT pid
 空格显示所有
