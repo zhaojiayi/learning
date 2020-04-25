@@ -16,14 +16,83 @@
   "when": "editorFocus"
 }
 
-{
-  "key": "ctrl+u",
-  "command": "cursorUndo",
-  "when": "textInputFocus"
-}
 
 {
   "key": "ctrl+shift+[",
   "command": "editor.fold",
   "when": "editorTextFocus && foldingEnabled"
 }
+{
+  "key": "ctrl+shift+f3",
+  "command": "editor.action.previousSelectionMatchFindAction",
+  "when": "editorFocus"
+}
+{
+  "key": "ctrl+l",
+  "command": "expandLineSelection",
+  "when": "textInputFocus"
+}
+{
+  "key": "ctrl+shift+l",
+  "command": "selectAllSearchEditorMatches",
+  "when": "inSearchEditor"
+}
+{
+  "key": "ctrl+f2",
+  "command": "editor.action.changeAll",
+  "when": "editorTextFocus && editorTextFocus && !editorReadonly"
+}这两个一样的
+
+{
+  "key": "ctrl+k ctrl+q",
+  "command": "workbench.action.navigateToLastEditLocation"
+}
+{
+  "key": "ctrl+u",
+  "command": "cursorUndo",
+  "when": "textInputFocus"
+}这两个连用
+
+{
+  "key": "shift+alt+right",
+  "command": "editor.action.smartSelect.expand",
+  "when": "editorTextFocus"
+}扩展选择
+{
+  "key": "alt+pageup",
+  "command": "scrollPageUp",
+  "when": "textInputFocus"
+}不变cursor的，与pageup不同
+
+{
+  "key": "ctrl+pageup",
+  "command": "workbench.action.previousEditor"
+}不用alt+tab
+{
+  "key": "ctrl+home",
+  "command": "cursorTop",
+  "when": "textInputFocus"
+}
+{
+  "key": "ctrl+b",
+  "command": "workbench.action.toggleSidebarVisibility"
+}
+{
+  "key": "ctrl+shift+p",
+  "command": "workbench.action.showCommands"
+}
+{
+  "key": "ctrl+p",
+  "command": "workbench.action.quickOpen"
+}
+
+{
+  "key": "ctrl+shift+-",
+  "command": "workbench.action.navigateForward"
+}
+{
+  "key": "ctrl+alt+-",
+  "command": "workbench.action.navigateBack"
+}这两个有用，意外关闭窗口时
+
+
