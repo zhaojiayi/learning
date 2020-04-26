@@ -23,9 +23,11 @@ X(:,2) = []删除第二列
 >> save myfile.mat
 >> load myfile.mat变量保存
 k = find(isprime(A))'索引是一列数完再下一列。
-A(k)直接输出索引对应的值q
+A(k)直接输出索引对应的值q。索引是一列数完再下一列
 ※sampleMean(k) = mean(currentData)%按列来的
-p = perms(1:4);排列组合
+p = perms(1:4);列出排列
+nchoosek(6,2) 组合数
+combntns(x,m) 从x向量中选m个组合
 prod(A)每一列的乘积
 {}大括号异构矩阵C{1}检索第一个矩阵；>> M = cell(8,1)初始化8×1矩阵
 s = 'Hello'是个1×5的char矩阵。a=double(s)和s=char(a)互为逆转换
@@ -61,6 +63,11 @@ function r = rank(A,tol)位于rank.m中
 dec2bin(0:(2^4-1), 4)//0000一直到1111，还可以规定长度
 A = abs(dec2bin(0:2^4-1,4))-48
 B = null(G,'r')通解零空间
+orth(A)求标准正交基
+randn(a,b) 标准正太分布 a*b的矩阵
+dec2bin(num,digs)还有位数的
+true(3) 3*3的全是1的方阵
+max([[1,2,3];[-1,3,2])返回的是[1,3,3]注意中间是分号。中间是逗号返回一个数
 --------------绘图-------------------
 xlabel('x = 0:2\pi')
 ylabel('Sine of x')

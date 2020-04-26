@@ -87,6 +87,7 @@
 }
 
 {
+
   "key": "ctrl+shift+-",
   "command": "workbench.action.navigateForward"
 }
@@ -95,4 +96,13 @@
   "command": "workbench.action.navigateBack"
 }这两个有用，意外关闭窗口时
 
+  "key": "ctrl+shift+[",
+  "command": "editor.fold",
+  "when": "editorTextFocus && foldingEnabled"
+}
+{
+  "key": "shift+enter",
+  "command": "python.execSelectionInTerminal",
+  "when": "editorTextFocus && !findInputFocussed && !python.datascience.ownsSelection && !replaceInputFocussed && editorLangId == 'python'"
+}(sendSelectionToInteractiveWindow)
 
