@@ -71,6 +71,8 @@ sudo find / -inum inodenum 查看硬链接文件
 ctrl+alt+up/down 工作区切换
 top查看进程
 kill -STOP pid ;  kill -CONT pid ；kill -ABRT pid
+ps -aux 显示所有进程 -C名字查找进程
+pkill 默认模糊删除，killall必须完全匹配删除
 空格显示所有
 ctrl+alt+f1-6 死机时用 f2是本体
 shift+F10右键 alt+enter属性  alt+F7激活移动窗口 
