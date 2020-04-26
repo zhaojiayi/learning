@@ -1,0 +1,3 @@
+Jekyll 支持从 _data 目录下的 YAML、JSON 和 CSV 载入数据，注意 CSV 文件必须包含表头行。
+{% for org_hash in site.data.orgs %} 当orgs是命令、或orgs.yml不是数组时，org_hash[0]表示名称，org_hash[1]表示内容
+ 
