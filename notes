@@ -12,3 +12,5 @@ SECRET_KEY=os.environ.get('SECRET_KEY',os.urandom(32))
 ALLOW_HOSTS=os.environ.get('ALLOWED_HOSTS','localhost').split(',')
 $export DEBUG=off
 $export ALLOWED_HOSTS=localhost,example.com
+
+D:\texlive2\2019\texmf-dist\tex\latex\moderncv

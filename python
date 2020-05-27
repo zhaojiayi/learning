@@ -72,5 +72,5 @@ mu, sigma = 0, 0.1 可以这样赋值
 p1=scipy.stats.norm.pdf(x, loc=0, scale=1) 代替matlab中normpdf 生成概率密度函数值
 np.linspace(2.0, 3.0, num=5) 等间隔的数组，默认是包括最后的3的
 fig.canvas.set_window_title('I am title') 窗口的标题
-
+~True==-2 会判断true 只有0会判断False
 

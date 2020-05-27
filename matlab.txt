@@ -79,4 +79,8 @@ subplot(m,n,p) 图是m×n的矩阵，选第p个
 subplot(3,1,3); plot(sin(x).*cos(x))
 B = padarray(A,[0,3],9,'both') 添加列填充
 B = padarray(A,3,9,'both')==B = padarray(A,[3,0],9,'both') 默认情况下都是both
-
+normest(Q)求向量长度（二范数）
+normrnd 正太分布随机数 exprnd 指数分布随机数
+x(x>1)筛选
+rand(n)在一个脚本里面值不变
+hold on作用于所有，直到调用hold off
