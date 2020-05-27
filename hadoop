@@ -1,0 +1,6 @@
+Namenode 端口: 50070 --> 9870
+./sbin/start-dfs.sh 启动hadoop
+hdfs dfs help 查看所有命令
+hdfs dfs -help command 查看具体某个命令
+su hadoop 切换用户
+jps 查看相关进程
