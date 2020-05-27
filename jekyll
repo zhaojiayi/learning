@@ -1,3 +1,9 @@
 Jekyll 支持从 _data 目录下的 YAML、JSON 和 CSV 载入数据，注意 CSV 文件必须包含表头行。
 {% for org_hash in site.data.orgs %} 当orgs是命令、或orgs.yml不是数组时，org_hash[0]表示名称，org_hash[1]表示内容
- 
+liquid标签里的全是yaml内容！！
+{{content}}表示md文件的内容，自动转换成html
+bundle show minima 显示主题位置，包括layout之类的可以用来覆盖
+jekyll new myblog --blank 不用minima主题
+文件不包含 YAML 头信息，它们亦不会被转换,--- ---空的头也会转换
+自动生成css，在主scss中添加--- --- 头信息进行自动转换，主scss中可以@import ... import的东西默认在_sass文件夹中找 
+

@@ -5,13 +5,16 @@ cat -n filename 显示行号
 more/tail/    head头10行
 mkdir创建目录 rmdir删除目录（目录为空才行）
 touch filename 创建文件
-ls -a查看包含隐藏文件 -l查看日期=ll
-grep kwd filename 在文本里查找kwd所在的一行，有空格加‘’
+ls -a查看包含隐藏文件 -l查看日期
+grep kwd dir+filename 在文本里查找kwd所在的一行，有空格加‘’
+grep -ir kwd *递归查找所有目录中文档中的kwd 不区分大小写
+>>>>>>> af5103e1027a7a800e6afbd20e2bc55cc3b0585b
 ls /dev/ | grep kwd组合☆
 grep -v 过滤
 win下 findstr
 find需要目录，locate不需要
-find -name -type(f文件,d目录) -atime使用 -mtime修改 -print +之前 -最近
+find -name -iname不区分大小写 -type(f文件,d目录) -atime使用 -mtime修改 -print +之前 -最近 用'*e*'匹配e正则表达
+whereis 查看shell命令位置
 rm 删除 要-i -r删除目录下所有并删除目录
 mv 源 目的 移动，默认覆盖 需要-i 可以用来重命名
 目录和文件不能重名！！！！！
@@ -43,14 +46,16 @@ conda list --export conda_list.txt 可以导出所有你已经安装好的包，
 pip freeze > requirements.txt将包依赖信息保存在requirements.txt文件中。
 pip install -r requirements.txt安装
 apt-cache search 关键字搜索
+apt安装的包基本上在usr/share，用新立得包管理属性查看安装的具体位置
 baobab
 ls -Slh 文件夹默认为4KB
 du -sh * | sort -rn
 nc -zv localhost 80 检查端口是否被占用
 ls -lt  时间由新到旧
 ls -ltr 时间由旧到新
-权限chmod 764 666.txt
+权限chmod 764 666.txt    User、Group、及Other
 chmod -R 764 directory 递归的，子目录也改变
+chown -R user directory 递归的，修改文件权限
 $echo 16384 | sudo tee -a /proc/sys/fs/inotify/max_user_watches     inode节点已满的问题(重启重置已解决)
 lsmod
 modinfo rtl8723be
@@ -58,17 +63,18 @@ sudo modprobe -r rtl8723be
 sudo modprobe rtl8723be
 which 查看终端命令的位置
 echo $PATH 查看环境变量
-printenv查看所有环境变量
+printenv查看所有环境变量，export也是
 临时export PATH=/opt/STM/STLinux-2.3/devkit/sh4/bin:$PATH
 /etc/bash.bashrc环境变量可作用所有用户，sudo su
 /etc/profile 亲测sudo su的python不作用
+source ~/.bashrc 激活环境变量
 回收站 /home/zhaojiayi/.local/share/Trash
 "nohup nautilus &" 解决崩溃，程序不随终端的关闭而终止
 man sysconf 查看手册
 sudo fdisk -l 列表磁盘
 ln originfile newfile 硬链接   ln -s软链接
 硬连接的文件inode相同，软连接inode不同
-ls显示： -为一般文件，d为目录，l是链接文件，数字是硬链接个数，最后的箭头软链接才显示。
+ls显示： -为一般文件，d为目录，l是链接文件，数字是硬链接个数，最后的箭头软链接才显示。拥有者和拥有者所在组
 ls -li file1 file2 查看inode number
 sudo find / -inum inodenum 查看硬链接文件
 ctrl+alt+up/down 工作区切换
@@ -83,3 +89,6 @@ shift+F10右键 alt+enter属性  alt+F7激活移动窗口
 service serv_name start   stop   status  服务开启 关闭 查看状态
 ping和telnet
 hexdump查看二进制
+ranger /和f都是查找，tab选择下一个
+groups user/id user 查看所属组
+sudo adduser hadoop sudo 把hadoop加到sudo组里面
