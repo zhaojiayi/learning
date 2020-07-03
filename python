@@ -22,7 +22,7 @@ for i in ... i到最后一个不再+1
 'ab:'.split(':') == ['ab','']
 
 import a
-dir(a)查看属性
+dir(a)查看属性，内建函数,类也是
 
 实践证明，list和array作为参数获取.nc数据都可以！！！无区别
 numpy netCDF4 参数可是列表也可是数组  a.variables['lon'][[1,2,3],[1],2,:]，都行！！！
@@ -41,8 +41,7 @@ str.replace(origin,target,count)最多修改count处 注意避免把所有的都
 split出现连续的分隔符，会出现空元素。
 列表不同与字符串，是可变的，通过下标改.列表允许相同的元素出现
 ※list.append(one_element);list1.extend(list2)或者list1+=list2;list.insert(index,one_element);del list[index]通过index删除;list.remove(element)通过内容删除（第一个）;list.pop()==list.pop(-1);list.index(element)返回index;list.count(element)出现的次数
-sorted(list)list不变；list.sort()list改
-变。默认升序
+sorted(list)list不变；list.sort()list改变。默认升序
 list或者tuple：a,b,c,d = list1分别赋值
 list用等号相当于引用，标签。三种复制方法list1 = list2.copy();list1 = list(list2);list1 = list2[:]
 ☆字典的键不可变，所以必须是字符串或者元组。
@@ -72,5 +71,55 @@ mu, sigma = 0, 0.1 可以这样赋值
 p1=scipy.stats.norm.pdf(x, loc=0, scale=1) 代替matlab中normpdf 生成概率密度函数值
 np.linspace(2.0, 3.0, num=5) 等间隔的数组，默认是包括最后的3的
 fig.canvas.set_window_title('I am title') 窗口的标题
-
-
+~True==-2 会判断true 只有0会判断False
+函数参数 dtype=float  dtype=0   dtype:float 都可以
+print(f"Owner Name:{owner}")直接替换owner
+print(foo1 is foo2)  # True
+print("I am %s, age %s, height %s" % (name, age, height))
+a="%s * 1" % v 把v赋值进去，然后再eval执行字符串语言（加法）得到结果
+在函数体里，变量没有作用域，变了就一直变
+装饰器作用：插入日志，性能测试，事务处理，缓存。权限的校验等场景 函数执行时间统计3，执行函数前预备处理4，执行函数后清理功能
+装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能
+※装饰器其实是个函数，其返回一个函数（不是实例，名字和被修饰的是一样的），这个函数用来修饰目标函数。所以装饰函数（包括自身）至少有两个函数，第一个函数，参数为被修饰函数（不是实例），返回的是函数（不是实例），第二个函数，参数为被修饰函数的参数，其返回被修饰目标函数实例，取决于被修饰函数是否有返回，！！没有返回也可以不返回，但一定要有被修饰函数的实例！！
+※被装饰的是类也可以。此时第一个函数参数变为cls（因为不是实例），返回的是函数（不是实例），第二个函数参数为类的参数，返回的是类的实例。
+※※f = a(b(c(f)))从里到外，从下到上，这是不用的@的等价形式，返回后还要f()才行
+※装饰器可能接收除开被装饰函数外的多个参数，可以在真正的装饰器外包裹一个函数，实现多参数。装饰器@变为外包裹函数。这时装饰器至少有三个函数，第一个函数参数为新的，在@dec(...)中用，第二个函数参数为被修饰函数，第三个函数参数为*args,**kwargs为被修饰函数的参数
+※传入被修饰函数的那个函数，其里面的函数，参数为被修饰函数的参数（重要理解）其里面的这个函数，返回的是函数实例；两个的参数都是*args,*kwargs。外层的都是直接返回函数（不要()）
+注意返回函数和返回函数实例(有括号)是不一样的。返回函数还需要括号()一下才能实现
+A.foo1(a) 等价于a=A() a.foo1() 对应A类里面的 def foo1(self)
+__doc__ 是'''xxx'''注释中的内容
+print(func.__init__.__doc__)查看内置函数的说明
+单下划线开头：受保护的，不能from import导入，只能import a_module._var导入。类也是一样的，可以通过类名._xxx或者实例名._xxx来访问
+双下划线开头，私有的，只能类本身访问，子类也不信，在文本上被替换为_class__method，可以通过对象名._类名__xxx这样的方式可以访问（注意类名要加一个下划线）只允许在该类的内部中使用
+※注意，双函数，外面函数返回里面函数，外面函数的实例会返回里面函数，返回值再实例化即可调用里面函数。里面函数的值可以用外面函数的，不会回收，可以累加
+__xx__魔法方法
+str_x = str_x[1:][::-1]两次取值范围
+b=[i for i in range(0,5) if i>2]      [3,4]
+str.split(str="", num=string.count(str)). str是原str
+str.join([1,2,3]) str是分隔符
+内置数据类型，可变类型有list,dict,set.不可变类型有string，number,tuple 指的是内存地址的变化
+is比较id，==比较值
+print filter(lambda x: x % 3 == 0, foo) 索引过滤
+print map(lambda x: x * 2 + 10, foo) 修改
+print reduce(lambda x, y: x + y, foo) 累和
+※lambda返回的是函数对象 ，冒号前是参数，冒号后是返回值
+※延迟绑定 [lambda x: i *x for i in range(4)]4个匿名函数对象的列表。for后先执行，for前后执行。for后的i先执行，for执行完之后再执行for前的i*x
+LEGB变量作用域查找 local enclosing global bulid-in
+ord(c) 返回对应的ASCII码
+alist_sort = sorted(alist,key=lambda e: e.__getitem__('age'),reverse=True)对字典的列表排序
+dict = dict.fromkeys(seq, 10) 列表的值为字典的键。可以只是一个参数，使得值为None。
+getattr(obj,"name")返回对象实例属性的值 hasattr(obj, 'name') 判断是否有属性，setattr(obj, 'name',3) 赋值
+抽象类中既可以有普通函数，也可以有抽象函数（利用继承metaclass=abc.ABCMeta）。接口必须全部为抽象函数(函数内容pass)
+可以通过 sys.getrefcount(obj) 来获取对象的引用计数
+函数重载，参数个数不同，参数类型不同。第一种情况，用缺省参数
+可变参数引用传递，不可变参数按值传递
+a, b = b, a交换两个变量
+※Iterator对象可以被next()函数调用并不断返回下一个数据
+可迭代对象 通过调用__iter__()得到迭代器
+带有 yield 的函数在 Python 中被称之为 generator（生成器）
+[a for inside in question_list for a in inside] for右边是从左至右
+*args打包成元组给函数体调用，**kwargs打包成字典
+在类外声明def为函数；类中声明def：使用类调用为函数，使用实例化对象调用为方法
+面向对象有三大特性，封装、继承和多态。属性和行为。
+封装和继承是为了使代码重用，那么多态则是为了实现接口重用
+WSGI、CGI等标准无非是让WEB服务器知道找谁处理请求；让应用程序知道请求是什么，以及如何返回结果给Web服务器。

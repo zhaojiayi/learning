@@ -17,4 +17,8 @@ SELECT '2018-10-31' + INTERVAL 1 DAY;直接运算
  TIMESTAMPDIFF(YEAR,birth,CURDATE()) AS age
  FROM pet ORDER BY name;
 -----
-
+直接group by 可以去重
+sql函数参数都是基于列属性
+where 查询中=查询可以用索引
+Limit 1 明知道只有1个结果，立即返回
+UNION ALL 速度更快不去重

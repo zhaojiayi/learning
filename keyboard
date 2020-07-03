@@ -2,18 +2,21 @@
 pwd显示当前目录
 touch 建立空的文本文件
 cat -n filename 显示行号
+more/tail/    head头10行
 mkdir创建目录 rmdir删除目录（目录为空才行）
 touch filename 创建文件
 ls -a查看包含隐藏文件 -l查看日期
 grep kwd dir+filename 在文本里查找kwd所在的一行，有空格加‘’
 grep -ir kwd *递归查找所有目录中文档中的kwd 不区分大小写
+>>>>>>> af5103e1027a7a800e6afbd20e2bc55cc3b0585b
 ls /dev/ | grep kwd组合☆
+grep -v 过滤
 win下 findstr
 find需要目录，locate不需要
 find -name -iname不区分大小写 -type(f文件,d目录) -atime使用 -mtime修改 -print +之前 -最近 用'*e*'匹配e正则表达
 whereis 查看shell命令位置
 rm 删除 要-i -r删除目录下所有并删除目录
-mv移动，默认覆盖 需要-i 可以用来重命名
+mv 源 目的 移动，默认覆盖 需要-i 可以用来重命名
 目录和文件不能重名！！！！！
 cp -a 权限一致  结尾有/与无/有重要区别？？？ -r源文件为目录时使用 -i提示，默认不提示
 cp -r dir1 dir2     (recursive copy) 复制整个目录.若目录 dir2 不存在，则将目录dir1，及其所有文档和子目录，复制到目录 dir2 下，新目录名称为dir1.若目录dir2不存在，则将dir1，及其所有文档和子目录，复制为目录 dir2)
@@ -22,13 +25,13 @@ cp -r dir1 dir2     (recursive copy) 复制整个目录.若目录 dir2 不存在
 直接用命令 dpkg -S softwarename 显示包含此软件包的所有位置，dpkg -L softwarename 显示安装路径。
 .rpm文件用rpm管理
 下载tar.gz。解压后 ./configure --prefix=/地址。之后编译 make。之后安装sudo make install需要root。
-df 查看磁盘情况
+df -h查看磁盘情况 free -h内存大小 du -h 文件大小
 zip [参数] [打包后的文件名] [要打包的目录路径file1 file2]
-一般 zip -r .....
+一般 zip -r ..... 
 gunzip等于gzip -d
 gzip -tv filename 显示压缩文件是否完好
 tar -czvf filename.tar.gz file1 file2 c指导创建归档文件 v用于显示命令执行过程 f用于制定归档文件的文件名 z调用gzip程序
-tar -xzvf filename.tar.gz 解压 -C解压目录
+tar -xzvf filename.tar.gz 解压 名字之后 -C dir..
 vim filename初始化。I插入模式。O在下方插入一行。w filename保存。q退出。:wq保存文件并退出。:q!放弃保存并退出
 :向前查找 ？向后查找
 /搜索
@@ -83,6 +86,9 @@ pkill 默认模糊删除，killall必须完全匹配删除
 ctrl+alt+f1-6 死机时用 f2是本体
 shift+F10右键 alt+enter属性  alt+F7激活移动窗口 
 终端： ctrl+shift+t 新建标签 ctrl+w取消一个单词  ctrl+y恢复
+service serv_name start   stop   status  服务开启 关闭 查看状态
+ping和telnet
+hexdump查看二进制
 ranger /和f都是查找，tab选择下一个
 groups user/id user 查看所属组
 sudo adduser hadoop sudo 把hadoop加到sudo组里面

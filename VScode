@@ -1,24 +1,5 @@
-﻿ctrl k 匹配下一个
-c_cpp_properties.json中，includePath不递归，browse.path递归
+﻿c_cpp_properties.json中，includePath不递归，browse.path递归
 editor.action.triggerParameterHints触发参数提示
 editor.action.triggerSuggest触发建议
-{
-  "key": "ctrl+u",
-  "command": "cursorUndo",
-  "when": "textInputFocus"
-}
-{
-  "key": "alt+left",
-  "command": "workbench.action.navigateToLastEditLocation"
-}
-{
-  "key": "alt+pageup",
-  "command": "workbench.action.navigateBack"
-}后退
-{
-  "key": "alt+pagedown",
-  "command": "workbench.action.navigateForward"
-}前进
-
 jedi关于python的intelligence设置
-hexdump查看二进制
+workbench.settings.useSplitJSON设置用json，可以看到扩展的默认设置（~/.vscode/extensions/.../package.json的内容）
