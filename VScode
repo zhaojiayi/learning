@@ -1,9 +1,5 @@
 ﻿c_cpp_properties.json中，includePath不递归，browse.path递归
 editor.action.triggerParameterHints触发参数提示
 editor.action.triggerSuggest触发建议
-{
-  "key": "alt+left",
-  "command": "workbench.action.navigateToLastEditLocation"
-}
-
 jedi关于python的intelligence设置
+workbench.settings.useSplitJSON设置用json，可以看到扩展的默认设置（~/.vscode/extensions/.../package.json的内容）

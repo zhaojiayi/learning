@@ -84,3 +84,4 @@ normrnd 正太分布随机数 exprnd 指数分布随机数
 x(x>1)筛选
 rand(n)在一个脚本里面值不变
 hold on作用于所有，直到调用hold off
+[y,x]=getpts; %单击取点后，按enter结束 获取图像点坐标，要获取值直接im(x,y)
