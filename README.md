@@ -1,2 +1,12 @@
 # Notes of learning
-*[C](./C)
+ * [C](./C)
+ * [C++](./C++)
+ * [Python](./python)
+ * [MatLab](./matlab.txt)
+ * [Linux](./linux.txt)
+ * [Ubuntu](./keyboard)
+ * [GIT](./GIT.txt)
+ * [VSCode](./vscode_defaut.txt)
+ * [DBMS](./dbms)
+ * [Django](./django)
+ * [Jekyll](./jekyll)
