@@ -14,3 +14,4 @@ Queryset中，属性pk和id作用一致，只是pk为primaryKey，(pk=1)(id=1)�
 Applications include some combination of models, views, templates, template tags, static files, URLs, middleware, etc. They’re generally wired into projects with the INSTALLED_APPS setting and optionally with other mechanisms such as URLconfs, the MIDDLEWARE_CLASSES setting, or template inheritance.
 应用程序包括模型，视图，模板，模板标记，静态文件，URL，中间件等的一些组合。它们通常通过INSTALLED_APPS设置连接到项目中，并且可以与其他机制（如URLconf，MIDDLEWARE_CLASSES设置或模板继承。
 dumpdata和loaddata。loaddata会覆盖原有的id对应项（以loaddata为准）。
+ORM实现了数据模型与数据库的解耦

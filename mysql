@@ -22,3 +22,12 @@ sql函数参数都是基于列属性
 where 查询中=查询可以用索引
 Limit 1 明知道只有1个结果，立即返回
 UNION ALL 速度更快不去重
+create TABLE test1(id int)engine=innodb;用innodb引擎，在创建表时
+create INDEX index_name using hash on test1(id);创建索引方法1
+alter TABLE test1 add INDEX index_name(id);创建索引方法2
+show INDEX from test1;查看索引
+drop INDEX index_name on test1;删除索引方法1
+alter TABLE test1 drop INDEX index_name; 删除索引方法2
+PRIMARY KEY,FULLTEXT,UNIQUE索引不需要名字，UNIQUE允许空值
+InnoDB和MyISAM不支持hash，Memory支持
+EXPLAIN SELECT * FROM `t_mobilesms_11` WHERE  userid='2222' AND mobile='13281899972' AND billMonth='2018-04' 前面加个EXPLAIN看利用索引情况
