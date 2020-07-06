@@ -13,7 +13,7 @@ pairs = [(x,y) for (x,y) in d.iteritems()]
 >>> e = dict({'three': 3, 'one': 1, 'two': 2})
 >>> a == b == c == d == e
 True
-
+a='ab',b=[1,2] zip(a,b)也可以
 xrange 用法与 range 完全相同，所不同的是生成的不是一个list对象，而是一个生成器。在for里面两者结果一样，效率xrange更优
 Python 没有块作用域。最小的范围是函数。for里用的变量在for外面也可以用
 file_name='{}.html'.format(slug) #66666666加html
@@ -22,7 +22,7 @@ for i in ... i到最后一个不再+1
 'ab:'.split(':') == ['ab','']
 
 import a
-dir(a)查看属性，内建函数,类也是
+dir(a)查看属性，内建函数,类也是，类的实例也是
 
 实践证明，list和array作为参数获取.nc数据都可以！！！无区别
 numpy netCDF4 参数可是列表也可是数组  a.variables['lon'][[1,2,3],[1],2,:]，都行！！！
@@ -38,12 +38,14 @@ type四种 bool、int、float、str  都可以强制转换 eg:str(1)
 ※字符串：len(str);list=str.split(',')分成列表，缺省是换行符、空格、字符包;str=','.join(list)变成字符串;str.startwith(substr)返回bool;str.find(substr)/rfind;str.count(substr);str.isalnum()判断是否全是字母或数字
 str.replace(origin,target,count)最多修改count处 注意避免把所有的都换了
 元组和列表不要求所含元素的种类相同
+a=(1, )代表元组
 split出现连续的分隔符，会出现空元素。
 列表不同与字符串，是可变的，通过下标改.列表允许相同的元素出现
 ※list.append(one_element);list1.extend(list2)或者list1+=list2;list.insert(index,one_element);del list[index]通过index删除;list.remove(element)通过内容删除（第一个）;list.pop()==list.pop(-1);list.index(element)返回index;list.count(element)出现的次数
 sorted(list)list不变；list.sort()list改变。默认升序
 list或者tuple：a,b,c,d = list1分别赋值
 list用等号相当于引用，标签。三种复制方法list1 = list2.copy();list1 = list(list2);list1 = list2[:]
+list1.extend(list2) 合并两个列表  +也是合并  append效果不行
 ☆字典的键不可变，所以必须是字符串或者元组。
 字典直接赋值添加元素！！！
 dict1.update(dict2)如果重复，dict2会取代dict1
@@ -55,12 +57,12 @@ set(dict1)只有键被作用
 set中的交集运算符&,并集|，亦或^,还可以-，<=判断子集<判断真子集，返回bool。返回空集相当于false
 ---------------------
 列表推导式[num for num in range(1,6) if num%2==1]
-字典推导式(letter = 'letter')   [letter:word.count(letter) for letter in word]  优化[letter:word.count(letter) for letter in set(word)]
+字典推导式(letter = 'letter')   {letter:word.count(letter) for letter in word]  优化[letter:word.count(letter) for letter in set(word)}
 集合推导式 类似于列表推导式{}
 元组没有推导式
 (num for num in range(1,6))是生成器推导式，返回一个生成器对象。用list转换之只能转换一次
 用if thing is None区分None和False
-def function(*args):收集的是元组的形式。(**kwargs)收集的是字典
+def function(*args):收集的是元组的形式 位置收集参数。(**kwargs)收集的是字典 关键字收集参数
 numpy: z.reshape(-1,2) 自动检测
 matlab是一列中按行填充，numpy是一行中按列填充
 numpy.reshape(a, newshape, order='C')默认按一行中的列填充
@@ -77,7 +79,7 @@ print(f"Owner Name:{owner}")直接替换owner
 print(foo1 is foo2)  # True
 print("I am %s, age %s, height %s" % (name, age, height))
 a="%s * 1" % v 把v赋值进去，然后再eval执行字符串语言（加法）得到结果
-在函数体里，变量没有作用域，变了就一直变
+在函数体里，变量变了就一直变，没有生命周期，但是由作用域
 装饰器作用：插入日志，性能测试，事务处理，缓存。权限的校验等场景 函数执行时间统计3，执行函数前预备处理4，执行函数后清理功能
 装饰器本质上是一个 Python 函数或类，它可以让其他函数或类在不需要做任何代码修改的前提下增加额外功能
 ※装饰器其实是个函数，其返回一个函数（不是实例，名字和被修饰的是一样的），这个函数用来修饰目标函数。所以装饰函数（包括自身）至少有两个函数，第一个函数，参数为被修饰函数（不是实例），返回的是函数（不是实例），第二个函数，参数为被修饰函数的参数，其返回被修饰目标函数实例，取决于被修饰函数是否有返回，！！没有返回也可以不返回，但一定要有被修饰函数的实例！！
@@ -97,8 +99,9 @@ str_x = str_x[1:][::-1]两次取值范围
 b=[i for i in range(0,5) if i>2]      [3,4]
 str.split(str="", num=string.count(str)). str是原str
 str.join([1,2,3]) str是分隔符
-内置数据类型，可变类型有list,dict,set.不可变类型有string，number,tuple 指的是内存地址的变化
+内置数据类型，可变类型有list,dict,set.不可变类型有string，number,tuple，bool 指的是内存地址的变化。可变参数内存不变，不可变类型id要变
 is比较id，==比较值
+※三种赋值方法。等号（都是默认引用，只是不可变对象更改后内存发生变化了），copy.copy(..) , copy.deepcopy(..)（两个copy是不可变对象是引用，可变对象是重新创建新地址）（浅拷贝如果子对象可变，即是引用，拷贝的也是引用）
 print filter(lambda x: x % 3 == 0, foo) 索引过滤
 print map(lambda x: x * 2 + 10, foo) 修改
 print reduce(lambda x, y: x + y, foo) 累和
@@ -118,8 +121,47 @@ a, b = b, a交换两个变量
 可迭代对象 通过调用__iter__()得到迭代器
 带有 yield 的函数在 Python 中被称之为 generator（生成器）
 [a for inside in question_list for a in inside] for右边是从左至右
+x=[j for i in a for j in i] 
 *args打包成元组给函数体调用，**kwargs打包成字典
 在类外声明def为函数；类中声明def：使用类调用为函数，使用实例化对象调用为方法
 面向对象有三大特性，封装、继承和多态。属性和行为。
 封装和继承是为了使代码重用，那么多态则是为了实现接口重用
 WSGI、CGI等标准无非是让WEB服务器知道找谁处理请求；让应用程序知道请求是什么，以及如何返回结果给Web服务器。
+函数可以用参数传递的语言可以用装饰器
+Python的assert是用来检查一个条件，如果它为真，就不做任何事。如果它为假，则会抛出AssertError并且包含错误信息。
+try: raise 错误类型 except 错误类型 as 错误类型别名：print(别名)
+正则表达式匹配中，（.*）贪婪匹配 （.*?）匹配区别？非贪婪匹配
+res1 = re.findall("<a>(.*)</a>", str) 返回匹配的列表
+try..except..else没有捕获到异常，执行else语句
+try..except..finally不管是否捕获到异常，都执行finally语句
+ret=re.sub(r"\d+","100",str)先找到数字，再替换成100，返回字符串
+res=re.split('\*| ',str) 切分,返回列表。用*或者空格切分，*必须用\
+ret = re.match("[\w]{4,20}@163\.com$",emaillist) 匹配邮箱 4-20个英文字母 
+res=re.match("1\d{9}[0-3,5-6,8-9]",tel)匹配末尾不是4和7的 匹配开头
+res=re.search()搜索第一个匹配值
+a="%.03f"%1.3335是字符串
+※python里的多线程（GIL的存在，一个线程只能一个CPU）。IO密集的用多线程，在用户输入，sleep 时候，可以切换到其他线程执行，减少等待的时间。CPU密集的用多进程，因为假如IO操作少，用多线程的话，因为线程共享一个全局解释器锁，表现为任意时间一个进程只有一个线程在跑，当前运行的线程会霸占GIL，其他线程没有GIL（全局解释器锁），就不能充分利用多核CPU的优势
+※为假：（0，空字符串，空列表、空字典、空元组、None, False）
+python字典和json字符串可以相互转化　
+python垃圾回收主要以引用计数为主，标记-清除和分代清除为辅的机制，其中标记-清除和分代回收主要是为了处理循环引用的难题。
+super()其实它相当于super(cls, self)
+super 其实和父类没有实质性的关联。多重继承时，是广度优先遍历父节点 通过MRO查找
+经典类是深度优先，新式类先是广度优先，现在是C3算法
+super还可以换成super(anotherclass,self)那就按照MRO再去查找
+cls.__instance=super(fatherclassname,cls).__new__(cls,*args,**kwargs) 单例模式 只保持内存一份实例，再定义即覆盖。py2写法，已经放弃new后面的除了cls的参数
+cls.__instance =object.__new__(cls)这里的cls不能省略
+重写__new__方法一定要return super().__new__(cls)
+Class B(A): A.__init__(self)或者super().init()一般用后者
+print("B", end=" ")将默认的换行改为空格
+调用函数，类实例化，函数内的函数，类内的函数都会被执行
+三元运算子[on true] if [expression] else [on false] 对应c++  ?:
+Method Resolution Order, MRO方法解析序列
+from random import shuffle  shuffle(mylist)直接将mylist打乱，不用返回
+闭包中的引用的自由变量只和具体的闭包有关联，闭包的每个实例引用的自由变量互不干扰。自由变量即该函数引用的外部变量
+一个闭包实例对其自由变量的修改会被传递到下一次该闭包实例的调用。
+闭包应用：单例模式，装饰器
+逻辑运算符 and or not 成员运算符 in not in  身份运算符 is is not 
+2str1.strip()去除首尾空格
+UTF-8 是隶属于 Unicode 的可变长的编码方式。encode结果是utf-8，decode把bytes变为字符串
+位置参数，默认参数，关键字参数，可变参数（位置收集参数 关键字收集参数）
+__str__用来返回类实例时的字符串显示
