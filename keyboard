@@ -8,7 +8,6 @@ touch filename 创建文件
 ls -a查看包含隐藏文件 -l查看日期
 grep kwd dir+filename 在文本里查找kwd所在的一行，有空格加‘’
 grep -ir kwd *递归查找所有目录中文档中的kwd 不区分大小写
->>>>>>> af5103e1027a7a800e6afbd20e2bc55cc3b0585b
 ls /dev/ | grep kwd组合☆
 grep -v 过滤
 win下 findstr

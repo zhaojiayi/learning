@@ -1,7 +1,7 @@
 ﻿__init__.py 保证该py所在的目录为package，在里面导入一些模块，其他地方可以从该包中导入这些模块。
 如from wms.models import Dataset, Server, Variable, Style 这些包并不是在models目录中，而在更深的目录，不过在models目录中的__init__.py中导入。就可以直接用models
 items()返回的是列表对象。而iteritems()返回的是iterator对象,在两者都可在for循环里使用。
-pairs = dict.items()返回键值对的列表，是元组的列表噢
+pairs = d.items()返回键值对的列表，是元组的列表噢
 pairs = zip(d.keys(), d.values())
 pairs = zip(d.iterkeys(), d.itervalues())
 pairs = [(x,y) for (x,y) in d.iteritems()]
@@ -34,7 +34,7 @@ print(99,"ads","adsa")自动加空格和回车
 type四种 bool、int、float、str  都可以强制转换 eg:str(1)
 ※字符串是不可变的，不能通过下标改。列表可以的
 ※index统统可以是正的也可以是负的
-分片[start:end;step] 提取到end-1  end=-1则是提取到倒数第二个（包括他）为止 0是第一个，-1是最后一个！！分片不改变原列表
+分片[start:end;step] 提取到end-1  end=-1则是提取到倒数第二个（包括他）为止。如果想全部，那么就是-1 0是第一个，-1是最后一个！！分片不改变原列表
 ※字符串：len(str);list=str.split(',')分成列表，缺省是换行符、空格、字符包;str=','.join(list)变成字符串;str.startwith(substr)返回bool;str.find(substr)/rfind;str.count(substr);str.isalnum()判断是否全是字母或数字
 str.replace(origin,target,count)最多修改count处 注意避免把所有的都换了
 元组和列表不要求所含元素的种类相同
@@ -102,11 +102,13 @@ str.join([1,2,3]) str是分隔符
 内置数据类型，可变类型有list,dict,set.不可变类型有string，number,tuple，bool 指的是内存地址的变化。可变参数内存不变，不可变类型id要变
 is比较id，==比较值
 ※三种赋值方法。等号（都是默认引用，只是不可变对象更改后内存发生变化了），copy.copy(..) , copy.deepcopy(..)（两个copy是不可变对象是引用，可变对象是重新创建新地址）（浅拷贝如果子对象可变，即是引用，拷贝的也是引用）
+函数式编程的代表
 print filter(lambda x: x % 3 == 0, foo) 索引过滤
 print map(lambda x: x * 2 + 10, foo) 修改
 print reduce(lambda x, y: x + y, foo) 累和
 ※lambda返回的是函数对象 ，冒号前是参数，冒号后是返回值
 ※延迟绑定 [lambda x: i *x for i in range(4)]4个匿名函数对象的列表。for后先执行，for前后执行。for后的i先执行，for执行完之后再执行for前的i*x
+Python的延迟绑定其实就是只有当运行嵌套函数的时候，才会引用外部变量i，不运行的时候，并不是会去找i的值
 LEGB变量作用域查找 local enclosing global bulid-in
 ord(c) 返回对应的ASCII码
 alist_sort = sorted(alist,key=lambda e: e.__getitem__('age'),reverse=True)对字典的列表排序
@@ -151,7 +153,7 @@ super还可以换成super(anotherclass,self)那就按照MRO再去查找
 cls.__instance=super(fatherclassname,cls).__new__(cls,*args,**kwargs) 单例模式 只保持内存一份实例，再定义即覆盖。py2写法，已经放弃new后面的除了cls的参数
 cls.__instance =object.__new__(cls)这里的cls不能省略
 重写__new__方法一定要return super().__new__(cls)
-Class B(A): A.__init__(self)或者super().init()一般用后者
+Class B(A): def __init__(self): A.__init__(self)或者super().init()一般用后者
 print("B", end=" ")将默认的换行改为空格
 调用函数，类实例化，函数内的函数，类内的函数都会被执行
 三元运算子[on true] if [expression] else [on false] 对应c++  ?:
@@ -165,3 +167,7 @@ from random import shuffle  shuffle(mylist)直接将mylist打乱，不用返回
 UTF-8 是隶属于 Unicode 的可变长的编码方式。encode结果是utf-8，decode把bytes变为字符串
 位置参数，默认参数，关键字参数，可变参数（位置收集参数 关键字收集参数）
 __str__用来返回类实例时的字符串显示
+Python有一个私有堆空间来保存所有的对象和数据结构
+with open 异常处理、关闭文件打包
+类方法加了装饰器property，调用类方法不需要加括号
+函数中pass，则返回None

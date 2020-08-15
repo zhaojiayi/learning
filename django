@@ -6,6 +6,7 @@ Django将HttpRequest作为第一个参数传递给视图函数。每个视图负
 HttpRequest.GET和HttpRequest.POST返回的都是QueryDict，是dict的子类，享有一切
 Database.objects.values() 是QuerySet(ValuesQuerySet)，返回的是字典列表，如果多个，是字典的列表！！而不是普通的模型对象
 Database.objects.values()对于外键属性，返回的是id 例如name_id。 values('name')和values('name_id')返回的是一样的
+Database.objects.values('id'):  <QuerySet [{'id': 1}, {'id': 2}, {'id': 3}, {'id': 4}]>
 values_list(*fields, flat=False) 类似于values()，但是返回的是元组列表而不是字典列表（没有属性，只有value
 运行django项目中的单个py，用python manage.py shell 在shell里面用%run path
 Queryset中，属性pk和id作用一致，只是pk为primaryKey，(pk=1)(id=1)一致
@@ -15,3 +16,36 @@ Applications include some combination of models, views, templates, template tags
 应用程序包括模型，视图，模板，模板标记，静态文件，URL，中间件等的一些组合。它们通常通过INSTALLED_APPS设置连接到项目中，并且可以与其他机制（如URLconf，MIDDLEWARE_CLASSES设置或模板继承。
 dumpdata和loaddata。loaddata会覆盖原有的id对应项（以loaddata为准）。
 ORM实现了数据模型与数据库的解耦
+CBV FBV 基于类、函数的视图类型。CBV自动选择相应的方法函数get、post。。小写
+CSRF一种装饰器，一种中间件实现
+
+conda install -c conda-forge djangorestframework
+
+不想进行csrf保护的view可以加上@csrf_exempt
+
+path(route, view, kwargs=None, name=None)
+path('articles/<int:year>/<int:month>/<slug:slug>/', views.article_detail)
+re_path(r'^articles/(?P<year>[0-9]{4})/(?P<month>[0-9]{2})/(?P<slug>[\w-]+)/$'
+当然用url(...)也可以，正则表达式加个r
+https://www.example.com/myapp/?page=3, the URLconf 只会去找myapp/. 剩余的page=3可以在视图中用request.GET获得
+※ modelobj._meta.fields查看model对象的属性
+get(self,request,*args,**kwargs): pk=kwargs.get('pk')
+?format=json ?format=admin
+
+三种关系
+poll = models.ForeignKey(
+    Poll,
+    on_delete=models.CASCADE,
+    verbose_name="the related poll",
+)
+sites = models.ManyToManyField(Site, verbose_name="list of sites")
+place = models.OneToOneField(
+    Place,
+    on_delete=models.CASCADE,
+    verbose_name="related place",
+)
+
+python3 manage.py makemigrations    #将你的数据库变动记录到一个小本本上（并不会帮帮你创建表）
+python3 manage.py migrate        #将你的数据库变动正在同步到数据库中
+
+数据库如果不指定primarykey，则自动生成id字段，否则不生成

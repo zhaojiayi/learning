@@ -28,7 +28,7 @@
   "when": "editorFocus"
 }
 {
-  "key": "ctrl+l",
+  "key": "ctrl+l", 向下
   "command": "expandLineSelection",
   "when": "textInputFocus"
 }
