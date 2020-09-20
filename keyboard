@@ -53,8 +53,8 @@ nc -zv localhost 80 检查端口是否被占用
 ls -lt  时间由新到旧
 ls -ltr 时间由旧到新
 权限chmod 764 666.txt    User、Group、及Other
-chmod -R 764 directory 递归的，子目录也改变
-chown -R user directory 递归的，修改文件权限
+chmod -R 764 directory 递归的，子目录也改变 更改文件权限
+chown -R user directory 递归的，修改文件权限 更改文件拥有者
 $echo 16384 | sudo tee -a /proc/sys/fs/inotify/max_user_watches     inode节点已满的问题(重启重置已解决)
 lsmod
 modinfo rtl8723be
