@@ -40,3 +40,4 @@ git reset –soft:回退到某个版本,git reset –hard:彻底回退到某个�
 git checkout . 放弃工作区的修改（还原），在add到暂存区前
 在add之后的话，先git reset HEAD, 再git checkout . 放弃工作区的修改（还原）
 git diff test master -- <filename> --后有空格，比较master相对于test的改进
+--depth=1神器

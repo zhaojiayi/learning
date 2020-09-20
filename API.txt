@@ -1,0 +1,49 @@
+serializer = SnippetSerializer(snippet)将model实例串行化成串行化对象 ※
+serializer.data 类型 rest_framework.utils.serializer_helpers.ReturnDict
+content = JSONRenderer().render(serializer.data)变为JSON content是bytes类型
+
+stream = BytesIO(content)
+data = JSONParser().parse(stream) 由JSON变为原生的dict
+serializer = SnippetSerializer(data=data) 将dict串行化成串行化对象※
+serializer.is_valid()
+serializer.validated_data  类型 collections.OrderedDict
+
+serializer = SnippetSerializer(Snippet.objects.all(), many=True)还可以序列化查询结果集querysets，而不是model实例
+serializer.data包含model的所有属性
+request.data可能只有部分
+
+from snippets.models import Snippet
+from snippets.serializers import SnippetSerializer
+from rest_framework.renderers import JSONRenderer 把 collections.OrderedDict类型转换成JSON
+from rest_framework.parsers import JSONParser 把JSON的IO流转换成原生DICT
+
+http -a zhaojiayi:123456 http://127.0.0.1:8000/snippets/
+http --form或者--json POST http://127.0.0.1:8000/snippets/ code="print 123" language="as" 双引号
+
+@api_view下，request.data适用于'POST'，'PUT'和'PATCH'方法，而传统的request.POST 只能用于POST
+@api_view下，request.data传过来的可能只有部分属性，而serializer.data是有model的所有属性
+
+GET:serializer = SnippetSerializer(snippets, many=True) snippets是model实例的集合queryset
+POST:serializer = SnippetSerializer(data=request.data)
+PUT:serializer = SnippetSerializer(snippet, data=request.data)
+后面两个需要：（GET不用）
+if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+
+# .save() will create a new instance.
+serializer = CommentSerializer(data=data)
+
+# .save() will update the existing `comment` instance. comment其实是model实例
+serializer = CommentSerializer(comment, data=data)
+
+使用generics.GenericAPIView构建了我们的视图，
+且mixins.ListModelMixin，mixins.CreateModelMixin，mixins.RetrieveModelMixin，mixins.UpdateModelMixin，mixins.DestroyModelMixin对应get post get put delete
+
+使用generics.ListCreateAPIView创建get post视图，generics.RetrieveUpdateDestroyAPIView创建get put delete视图
+
+序列化两个功能：请求数据的验证，queryset序列化
+View   ViewAPI   genericAPIView(无用)   genericViewSet   ModelViewSet
+
+lookup_field 查询单一数据库对象时使用的条件字段，默认为'pk'
+lookup_url_kwarg 查询单一数据时URL中的参数关键字名称，默认与look_field相同

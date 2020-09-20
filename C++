@@ -81,3 +81,5 @@ c++的多态性用一句话概括就是:在基类的函数前加上virtual关键
 函数指针是指向一个函数入口的指针；指针函数是函数的返回值是一个指针类型。
 C++预处理 头文件、宏定义、注释、条件编译指令
 const作用：定义常量、修饰函数参数、修饰函数返回值
+std::pair <std::multimap<char,int>::iterator, std::multimap<char,int>::iterator> ret; 重要表述
+map可以直接下标[]直接添加，默认全部的value为0。vector不能，需指定size
