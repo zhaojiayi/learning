@@ -23,6 +23,16 @@
   "when": "editorTextFocus && foldingEnabled"
 }
 {
+  "key": "ctrl+k ctrl+j",
+  "command": "editor.unfoldAll",
+  "when": "editorTextFocus && foldingEnabled"
+}
+{
+  "key": "ctrl+k ctrl+0",
+  "command": "editor.foldAll",
+  "when": "editorTextFocus && foldingEnabled"
+}
+{
   "key": "ctrl+shift+f3",
   "command": "editor.action.previousSelectionMatchFindAction",
   "when": "editorFocus"
@@ -105,4 +115,5 @@
   "command": "python.execSelectionInTerminal",
   "when": "editorTextFocus && !findInputFocussed && !python.datascience.ownsSelection && !replaceInputFocussed && editorLangId == 'python'"
 }(sendSelectionToInteractiveWindow)
+
 
